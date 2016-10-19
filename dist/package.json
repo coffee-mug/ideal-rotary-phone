@@ -10,6 +10,7 @@
  "dependencies": {
     "body-parser": "^1.15.2",
     "knex": "^0.12.5",
-    "bookshelf": "^0.10.2"
+    "bookshelf": "^0.10.2",
+    "pg": "^6.1.0"
  }
 }
