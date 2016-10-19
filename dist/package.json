@@ -1,0 +1,10 @@
+{
+ "name": "chocolateParty",
+ "version": "1.0.0",
+ "description": "chocolate party",
+ "author": "LK",
+ "private": true,
+ "scripts": {
+   "postinstall": "npm install express"
+ }
+}
