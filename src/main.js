@@ -7,6 +7,7 @@ import VueResource from 'vue-resource'
 // Components
 import App from './components/App.vue'
 import Signup from './components/Signup.vue'
+import Login from './components/Login.vue'
 
 Vue.use(VueRouter);
 Vue.use(VueResource);
@@ -15,7 +16,8 @@ Vue.use(VueResource);
 Vue.http.options.emulateJSON = true
 
 const routes = [
-    { path: '/signup', component: Signup }
+    { path: '/signup', component: Signup },
+    { path: '/login', component: Login }
 ]
 
 

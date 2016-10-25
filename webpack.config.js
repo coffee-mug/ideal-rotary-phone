@@ -43,7 +43,23 @@ module.exports = {
         '/signup': {
             target: 'http://localhost:3000',
             secure: false
-        }
+        },
+        '/login': {
+            target: 'http://localhost:3000',
+            secure: false
+        },
+        '/logout': {
+            target: 'http://localhost:3000',
+            secure: false
+        },
+        '/users': {
+            target: 'http://localhost:3000',
+            secure: false
+        },
+        '/users/*': {
+            target: 'http://localhost:3000',
+            secure: false
+        },
     },
   },
   devtool: '#eval-source-map'
