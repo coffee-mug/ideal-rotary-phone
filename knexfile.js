@@ -1,10 +1,9 @@
 // Update with your config settings.
 
 module.exports = {
-    client: 'pg',
+    client: 'sqlite3',
     connection: {
-        database: 'tereza',
-        user: 'lucas',
-        password: 'Pp97#nyGv'
-    } 
+      filename: './database.sqlite3'
+    },
+    useNullAsDefault: true
 };

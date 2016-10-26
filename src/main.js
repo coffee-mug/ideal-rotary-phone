@@ -8,6 +8,7 @@ import VueResource from 'vue-resource'
 import App from './components/App.vue'
 import Signup from './components/Signup.vue'
 import Login from './components/Login.vue'
+import Salon from './components/Salon.vue'
 
 Vue.use(VueRouter);
 Vue.use(VueResource);
@@ -15,9 +16,23 @@ Vue.use(VueResource);
 // Forms data
 Vue.http.options.emulateJSON = true
 
+var salon = {
+    path: '/admin/salon',
+    component: Salon,
+    beforeEnter: (to, from, next) => {
+      if (!window.localStorage.getItem('id')) {
+        // BE CAREFUL TO SECURE THE THING, ANYBODY COULD JUST ADD 'id' TO ITS Localstorage
+        next('/login');
+      } else {
+        next()
+      }
+    }
+}
+
 const routes = [
     { path: '/signup', component: Signup },
-    { path: '/login', component: Login }
+    { path: '/login', component: Login },
+    salon
 ]
 
 

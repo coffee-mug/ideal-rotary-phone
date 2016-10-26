@@ -11,10 +11,11 @@ var signupRoute = require('./routes/signup');
 var loginRoute = require('./routes/login');
 
 var Users = require('./models/users');
+var Store = require('./models/stores');
 
 var app = express();
 
-var PORT = process.env.PORT || 3000;
+var PORT = process.env.PORT || 6000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -44,7 +45,7 @@ passport.deserializeUser( (user, done) => {
 app.use('/signup', signupRoute);
 
 app.post('/login', passport.authenticate('local'), (req, res) => {
-    res.redirect('/users/' + req.user.attributes.id);
+    res.json({userId: req.user.attributes.id});
 }); 
 
 app.get('/logout', (req, res) => {
@@ -62,17 +63,38 @@ app.get('/users', (req, res) => {
 });
 
 // Need to be authenticated
-app.use('/signup', (req, res, next) => {
-    if (!req.isAuthenticated()) {
-        res.send(401);
-    }
-    console.log("OK, authenticated");
-    next();
-});
-
 app.get('/users/:id', (req, res) => {
     console.log('User is authenticated', req.isAuthenticated());
-    res.json( req.user );
+    res.json(req.user);
+});
+
+// Get Store Info
+app.get('/admin/salon/:user_id', (req, res) => {
+ Users
+    .where('id', req.params.user_id)
+    .fetch({ withRelated: ['store'] })
+    .then ( function(store) {
+      res.json({ store });
+    });
+});
+
+// Update Store info
+app.post('/admin/salon/:user_id', (req, res) => {
+    console.log(req.params);
+    return new Store({
+      raisonSoc: req.body.raisonSoc,
+      adresse: req.body.adresse,
+      adresse_complement: req.body.adresse_comp,
+      ville: req.body.ville,
+      cp: req.body.cp,
+      tel: req.body.telephone,
+      description: req.body.description,
+      user_id: req.body.user_id
+    })
+    .save()
+    .then ( (saved) => {
+      res.json({ saved });
+    });
 });
 
 

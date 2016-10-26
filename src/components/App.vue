@@ -10,7 +10,7 @@ export default {
   name: 'app',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App',
+      msg: 'Automatisation récupération des Sales Rank',
       idTest: '1',
     }
   },

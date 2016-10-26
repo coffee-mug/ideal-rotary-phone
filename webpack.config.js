@@ -41,23 +41,27 @@ module.exports = {
     noInfo: true,
     proxy: {
         '/signup': {
-            target: 'http://localhost:3000',
+            target: 'http://localhost:6000',
             secure: false
         },
         '/login': {
-            target: 'http://localhost:3000',
+            target: 'http://localhost:6000',
             secure: false
         },
         '/logout': {
-            target: 'http://localhost:3000',
+            target: 'http://localhost:6000',
             secure: false
         },
         '/users': {
-            target: 'http://localhost:3000',
+            target: 'http://localhost:6000',
             secure: false
         },
         '/users/*': {
-            target: 'http://localhost:3000',
+            target: 'http://localhost:6000',
+            secure: false
+        },
+        '/admin/*': {
+            target: 'http://localhost:6000',
             secure: false
         },
     },

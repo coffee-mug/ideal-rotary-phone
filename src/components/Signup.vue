@@ -46,10 +46,12 @@ export default {
 			if (this.email && this.password === this.passwordConfirmation) {
 				this.$http.post('/signup', { emailAddress: this.email, firstName: this.firstName, lastName: this.lastName, password: this.password }).then( (response) => {
 					// success
-					console.log(response.body);
+          console.log("SUCCESS!: ", response.body);
+          window.localStorage.setItem('id', response.body.saved.id);
+          this.$router.push('/admin/salon');
 				}, (response) => {
 					// error...
-					console.log(response.body);
+          console.log("ERROR!: ", response.body);
 				});	
 			}
 		},

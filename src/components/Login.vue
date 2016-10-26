@@ -10,7 +10,7 @@
           </div>
           <div class="form-group">
             <label for="passwordInput">Password</label>
-            <input id="passwordInput" v-model="password" />
+            <input id="passwordInput" type="password" v-model="password" />
           </div>
             <button @click.prevent="login()"> Login </button>
             <button @click.prevent="logout()"> Logout </button>
@@ -32,14 +32,18 @@ export default {
   methods: {
     login() {
       this.$http.post('/login', { email: this.email, password: this.password }).then( (res) => {
-        console.log(res);
+        console.log("SUCCESS! : \n", res.body);
+        window.localStorage.setItem('id', res.body.userId);
+        this.$router.push('/admin/salon');
       }, (err) => {
-        console.log(err);
+        console.log("ERROR! : \n", err);
       });
     },
     logout() {
       this.$http.get('/logout').then( (res) => {
-        console.log(res);
+        console.log("OK, loggedout", res);
+        window.localStorage.removeItem('id');
+        console.log(window.localStorage.removeItem('id'));
       }, (err) => {
         console.log(err);
       });
