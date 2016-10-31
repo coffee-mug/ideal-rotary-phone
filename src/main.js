@@ -31,10 +31,10 @@ var salon = {
 }
 
 const routes = [
-    { path: '/signup', component: Signup },
-    { path: '/login', component: Login },
+//    { path: '/signup', component: Signup },
+//    { path: '/login', component: Login },
     { path: '/prospection', component: Prospection },
-    salon
+//    salon
 ]
 
 
