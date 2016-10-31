@@ -12,6 +12,7 @@ var loginRoute = require('./routes/login');
 
 var Users = require('./models/users');
 var Store = require('./models/stores');
+var Prospection = require('./models/prospection');
 
 var app = express();
 
@@ -95,6 +96,22 @@ app.post('/admin/salon/:user_id', (req, res) => {
     .then ( (saved) => {
       res.json({ saved });
     });
+});
+
+app.post('/prospection', (req, res) => {
+  return new Prospection({
+    store_name: req.body.storeName,
+    address: req.body.address,
+    address_details: req.body.addressDetails,
+    city: req.body.city,
+    postal_code: req.body.postalCode,
+    telephone: req.body.telephone,
+    email: req.body.email
+  })
+  .save()
+  .then( (saved) => {
+    res.json( { saved } );
+  });
 });
 
 
