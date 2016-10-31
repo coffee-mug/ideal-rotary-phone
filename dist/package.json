@@ -1,16 +1,17 @@
 {
- "name": "chocolateParty",
- "version": "1.0.0",
- "description": "chocolate party",
- "author": "LK",
- "private": true,
- "scripts": {
-   "postinstall": "npm install express"
- },
- "dependencies": {
+  "name": "chocolateParty",
+  "version": "1.0.0",
+  "description": "chocolate party",
+  "author": "LK",
+  "private": true,
+  "scripts": {
+    "postinstall": "npm install express"
+  },
+  "dependencies": {
     "body-parser": "^1.15.2",
-    "knex": "^0.12.5",
     "bookshelf": "^0.10.2",
-    "pg": "^6.1.0"
- }
+    "knex": "^0.12.5",
+    "pg": "^6.1.0",
+    "serve-static": "^1.11.1"
+  }
 }
