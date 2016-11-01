@@ -4,27 +4,36 @@
     <div class="col-md-6 col-md-offset-3 col-xs-12">
       <div class="form-container">
         <form @submit.prevent="signup()">
+          <h1> S'inscrire !</h1>
           <div class="form-group">
-            <label for="email">Email address</label>
-            <input v-model="email"  class="form-control" placeholder="">
+            <label for="storeName">Nom</label>
+            <input v-model="storeName"  class="form-control" placeholder="">
           </div>
           <div class="form-group">
-            <label for="firstName">First Name</label>
-            <input v-model="firstName" class="form-control" placeholder="">
+            <label for="address">Adresse</label>
+            <input v-model="address" class="form-control" placeholder="">
           </div>
           <div class="form-group">
-            <label for="firstName">Last Name</label>
-            <input v-model="lastName" class="form-control" placeholder="">
+            <label for="addressDetails">Complément d'adresse</label>
+            <input v-model="addressDetails" class="form-control" placeholder="">
           </div>
           <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input v-model="password" type="password" class="form-control" placeholder="">
+            <label for="city">Ville</label>
+            <input v-model="city" class="form-control" placeholder="">
           </div>
           <div class="form-group">
-            <label for="exampleInputPassword1">Password Confirmation</label>
-            <input v-model="passwordConfirmation" type="password" class="form-control" placeholder="">
+            <label for="postalCode">Code postal</label>
+            <input v-model="postalCode" type="text" class="form-control" placeholder="">
           </div>
-          <button @click.prevent="signup()" type="submit" class="submit-btn">Submit</button>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input v-model="email" type="email" class="form-control" placeholder="">
+          </div>
+          <div class="form-group">
+            <label for="telephone">Téléphone</label>
+            <input v-model="telephone" type="tel" class="form-control" placeholder="">
+          </div>
+          <button @click.prevent="signup()" type="submit" class="submit-btn">GO !</button>
         </form>
       </div>
     </div>
@@ -36,26 +45,33 @@
 export default {
 	data() {
 		return {
-			email: '',
-			firstName: '',
-			lastName: '',
-			password: '',
-			passwordConfirmation: ''
+      storeName: '',
+      address: '',
+      addressDetails: '',
+      city: '',
+      postalCode: '',
+      telephone: '',
+      email: ''
 		}
 	},
 	methods: {
 		signup() {
-			if (this.email && this.password === this.passwordConfirmation) {
-				this.$http.post('/signup', { emailAddress: this.email, firstName: this.firstName, lastName: this.lastName, password: this.password }).then( (response) => {
+				this.$http.post('/prospection', { 
+          storeName: this.storeName, 
+          address: this.address,
+          addressDetails: this.address_details,
+          city: this.city,
+          postalCode: this.postalCode,
+          telephone: this.telephone,
+          email: this.email
+        }).then( (response) => {
 					// success
           console.log("SUCCESS!: ", response.body);
           window.localStorage.setItem('id', response.body.saved.id);
-          this.$router.push('/admin/salon');
 				}, (response) => {
 					// error...
           console.log("ERROR!: ", response.body);
-				});	
-			}
+				});
 		},
 
 	}
@@ -83,6 +99,19 @@ form {
   border-image-slice: 1;
   box-shadow: 0 0px 5px #432CC9;
   min-width: 25vw;
+}
+
+form h1 {
+  font-family: 'Sacramento', cursive;
+  margin: 15px 0;
+}
+
+.scissor {
+  font-size: 48px;
+  color: #FFDE24;
+  border: 3px solid rgba(4,3,15,0.8);
+  padding: 25px;
+  border-radius: 50px;
 }
 
 .form-control {
@@ -125,7 +154,7 @@ label {
 }
 
 .submit-btn:hover {
-  background-color: #432CC9;
+  background-color: #D7263D;
   border-color: transparent;
 }
 

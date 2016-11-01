@@ -10,9 +10,20 @@ export default {
   name: 'app',
   data () {
     return {
-      msg: 'Automatisation récupération des Sales Rank',
+      msg: "",
       idTest: '1',
     }
   },
 }
 </script>
+
+<style>
+h1 {
+  font-family: 'Sacramento', cursive;
+  color: #eee;
+  text-align: center;
+  font-size: 4.5rem;
+  margin-top: 5vh;
+}
+
+</style>

@@ -64,6 +64,10 @@ module.exports = {
             target: 'http://localhost:6000',
             secure: false
         },
+        '/prospection': {
+            target: 'http://localhost:6000',
+            secure: false
+        },
     },
   },
   devtool: '#eval-source-map'

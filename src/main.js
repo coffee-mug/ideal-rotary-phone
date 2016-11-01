@@ -9,6 +9,7 @@ import App from './components/App.vue'
 import Signup from './components/Signup.vue'
 import Login from './components/Login.vue'
 import Salon from './components/Salon.vue'
+import Prospection from './components/Prospection.vue'
 
 Vue.use(VueRouter);
 Vue.use(VueResource);
@@ -30,9 +31,10 @@ var salon = {
 }
 
 const routes = [
-    { path: '/signup', component: Signup },
-    { path: '/login', component: Login },
-    salon
+//    { path: '/signup', component: Signup },
+//    { path: '/login', component: Login },
+    { path: '/prospection', component: Prospection },
+//    salon
 ]
 
 
