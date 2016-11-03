@@ -1,10 +1,16 @@
 <template>
 <div class="container">
   <div class="row">
+    <div class="col-md-12 col-xs-12">
+      <div class="logo-bar">
+      </div>
+    </div>
+  </div>
+  <div class="row">
     <div class="col-md-6 col-md-offset-3 col-xs-12">
       <div class="form-container">
         <form @submit.prevent="signup()">
-          <h1> S'inscrire !</h1>
+          <h1> Inscription </h1>
           <div class="form-group">
             <label for="storeName">Nom</label>
             <input v-model="storeName"  class="form-control" placeholder="">
@@ -14,7 +20,7 @@
             <input v-model="address" class="form-control" placeholder="">
           </div>
           <div class="form-group">
-            <label for="addressDetails">Complément d'adresse</label>
+            <label for="addressDetails">Complement d'adresse</label>
             <input v-model="addressDetails" class="form-control" placeholder="">
           </div>
           <div class="form-group">
@@ -30,10 +36,10 @@
             <input v-model="email" type="email" class="form-control" placeholder="">
           </div>
           <div class="form-group">
-            <label for="telephone">Téléphone</label>
+            <label for="telephone">Telephone</label>
             <input v-model="telephone" type="tel" class="form-control" placeholder="">
           </div>
-          <button @click.prevent="signup()" type="submit" class="submit-btn">GO !</button>
+          <button @click.prevent="signup()" type="submit" class="submit-btn">S'inscrire</button>
         </form>
       </div>
     </div>
@@ -80,6 +86,18 @@ export default {
 </script>
 
 <style>
+/*
+  blue: rgb(75,168,163);
+  grey: rgb(178,178,180);
+  brown: rgb(195,152,140); 
+  orange: rgb(247,177,60);
+*/
+
+@font-face {
+  font-family: MarketDeco;
+  src: url(Market_Deco.woff);
+}
+
 body {
   background-color: #04030F;
   font-family: 'Lato', sans-serif;
@@ -93,28 +111,27 @@ body {
 }
 
 form {
+  font-family: MarketDeco;
   padding: 40px;
-  border: 2px solid transparent;
-  -webkit-border-image: -webkit-linear-gradient(top right, #2E294E 0%, #F94141 100%);
+  border: 8px solid transparent;
+  -webkit-border-image:-webkit-linear-gradient(top right, rgb(247,177,60) 40%,rgb(195,152,140) 40%, rgb(195,152,140) 60%, rgb(75,168,163) 60% ); 
   border-image-slice: 1;
-  box-shadow: 0 0px 5px #432CC9;
   min-width: 25vw;
+  background: rgb(178,178,178);
 }
 
 form h1 {
-  font-family: 'Sacramento', cursive;
+  font-family: MarketDeco;
+  text-align: center;
+  color: #eee;
+  font-weight: bold;
+  font-size: 2.1em;
   margin: 15px 0;
 }
 
-.scissor {
-  font-size: 48px;
-  color: #FFDE24;
-  border: 3px solid rgba(4,3,15,0.8);
-  padding: 25px;
-  border-radius: 50px;
-}
-
 .form-control {
+  font-family: Verdana, sans-serif;
+  font-size: 1.1em;
   border-top: none;
   border-left: none;
   border-right: none;
@@ -123,18 +140,18 @@ form h1 {
 }
 
 .form-control:focus {
-  border-color:#0197F6;
+  border: 2px solid #0197F6;
   box-shadow: none;
 }
 
 input.form-control {
   border-radius: 0;
-  background-color: rgba(4,3,15,0.65);
-  color: rgba(255,255,255,0.7);
+  background-color: rgba(255, 255, 255,0.65);
+  color: #333;
 }
 
 label {
-  color: rgba(255,255,255,0.7);
+  color: #333;
 }
 
 .submit-btn {
@@ -146,16 +163,36 @@ label {
   margin-top: 5vh;
   background-color: #04030F;
   border: 1px solid transparent;
-  -webkit-border-image: -webkit-linear-gradient(45deg, #2E294E, #F94141);
+  -webkit-border-image:-webkit-linear-gradient(top right, rgb(247,177,60) 40%,rgb(195,152,140) 40%, rgb(195,152,140) 60%, rgb(75,168,163) 60% ); 
   border-image-slice: 1;
   font-weight: bold;
   color: #fff;
   transition: color ease-in-out 0.2s, background-color ease-in-out 0.2s;
+  text-transform: uppercase;
 }
 
 .submit-btn:hover {
-  background-color: #D7263D;
-  border-color: transparent;
+  background-color: rgb(75,168,163);
+  -webkit-border-image: none;
+}
+
+.logo-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 5vh;
+  background: -webkit-linear-gradient(-40deg, rgb(75, 168, 163) 33%, rgb(195,152,140) 33%, rgb(195,152,140) 67%, rgb(247,177,60) 67% ); 
+}
+
+:after, :before {
+  position: fixed;
+  width: 20vw;
+  height: 5vh;
+  border-right: 5vh solid rgb(247,177,60);
+  border-bottom: 5vh solid rgb(195,152,140);  
+  top: 0;
+  right: 25vw;
 }
 
 </style>

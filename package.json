@@ -21,6 +21,7 @@
     "passport-local": "^1.0.0",
     "pg": "^6.1.0",
     "sqlite3": "^3.1.6",
+    "url-loader": "^0.5.7",
     "vue": "^2.0.1",
     "vue-resource": "^1.0.3",
     "vue-router": "^2.0.1"
