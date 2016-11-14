@@ -51,6 +51,7 @@ app.post('/login', passport.authenticate('local'), (req, res) => {
 
 app.get('/logout', (req, res) => {
     req.logout();
+    // Need to fix logout client side localStorage
     console.log('Ok, logged out');
     res.json();
 });
@@ -114,6 +115,22 @@ app.post('/prospection', (req, res) => {
   });
 });
 
+app.get('/prospection/admin', (req, res) => {
+    Prospection
+      .fetchAll()
+      .then( (users) => {
+          res.json({ users });
+      });
+});
+
+app.get('/prospection/admin/:id', (req, res) => {
+    Prospection
+      .where('id', req.params.id)
+      .fetch()
+      .then( (prospect) => { 
+          res.json({ prospect }); 
+      });
+});
 
 app.listen(PORT, function() {
     console.log('Server listening on Port %s', PORT);

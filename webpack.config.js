@@ -68,7 +68,7 @@ module.exports = {
             target: 'http://localhost:6000',
             secure: false
         },
-        '/prospection': {
+        '/prospection/*': {
             target: 'http://localhost:6000',
             secure: false
         },

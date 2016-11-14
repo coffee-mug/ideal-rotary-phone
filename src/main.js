@@ -10,6 +10,8 @@ import Signup from './components/Signup.vue'
 import Login from './components/Login.vue'
 import Salon from './components/Salon.vue'
 import Prospection from './components/Prospection.vue'
+import ProspectionAdmin from './components/ProspectionAdmin.vue'
+import ProspectionAdminItem from './components/ProspectionAdminItem.vue'
 
 Vue.use(VueRouter);
 Vue.use(VueResource);
@@ -31,12 +33,13 @@ var salon = {
 }
 
 const routes = [
-//    { path: '/signup', component: Signup },
-//    { path: '/login', component: Login },
+    { path: '/signup', component: Signup },
+    { path: '/login', component: Login },
     { path: '/prospection', component: Prospection },
-//    salon
+    { path: '/prospection/admin', component: ProspectionAdmin },
+    { path: '/prospection/admin/:id', component: ProspectionAdminItem, name:"prospects" },
+      salon
 ]
-
 
 const router = new VueRouter({
     routes

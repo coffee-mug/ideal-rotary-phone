@@ -1,9 +1,19 @@
 // Update with your config settings.
 
 module.exports = {
-    client: 'sqlite3',
-    connection: {
-      filename: './database.sqlite3'
+    'development': {
+        client: 'sqlite3',
+        connection: {
+          filename: './database.sqlite3'
+        },
+        useNullAsDefault: true
     },
-    useNullAsDefault: true
+    'production': {
+        client: 'pg',
+        connection: process.env.DATABASE_URL,
+        ssl: true,
+        migrations: {
+            tableName: 'migrations'
+        } 
+    }
 };
