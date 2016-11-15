@@ -132,8 +132,31 @@ app.get('/prospection/admin/:id', (req, res) => {
       });
 });
 
+app.put('/prospection/admin/:id', (req, res) => {
+    var fields_to_update,
+        updateObject;
+
+    // While curent implementation allow for one update, this will make updating several
+    // fields easier. 
+    // @returns an array containing the fields to update
+    fields_to_update = Object.keys(req.body).map( (e) => { return e });
+    console.log(fields_to_update);
+
+    updateObject = {};
+
+    fields_to_update.forEach( (e) => {
+      updateObject[e] = req.body[e]
+    });
+
+    
+    Prospection
+      .where('id', req.params.id)
+      .save(updateObject, { method: 'update' })
+      .then( (updatedModel) => {
+        res.json({ updatedModel });
+      });
+});
+
 app.listen(PORT, function() {
     console.log('Server listening on Port %s', PORT);
 });
-
-

@@ -1,11 +1,11 @@
 <template>
 <div>
-  <h1>Details Prospect</h1>
+  <h1></h1>
   <form> 
     <template v-for="(value, key) in prospect">
       <div class="form-group">
         <label>{{ key }}</label>
-        <input :value="value" placeholder="value" keypress.enter.prevent="updateField"></input>
+        <input v-model="prospect[key]" :value="value" placeholder="value" @keydown.enter.prevent="updateField(key)"></input>
       </div>
     </template>
   </form>
@@ -25,6 +25,8 @@ export default {
 
     this.$http.get('/prospection/admin/' + this.$route.params.id)
       .then( (res) => {
+        //  A bunch of methods are added to the returned objects, filter them out
+        //  to only keep what corresponds to the model
         prospectProperties = Object.keys(res.body.prospect).filter( (e) => {
           if (typeof e !== 'function') {
             return e;
@@ -33,6 +35,7 @@ export default {
 
         prospectData = {};
 
+        // Associate data 
         prospectProperties.map( (e) => {
            prospectData[e] = res.body.prospect[e];  
         });
@@ -44,8 +47,17 @@ export default {
       });
   },
   methods: {
-    updateField(e) {
-      console.log(e.target);
+    updateField(k,v) {
+      var updatedValue = this.prospect[k],
+          bodyObject = {};
+
+      bodyObject[k] = updatedValue;
+
+      console.log("Key: ", k, updatedValue);
+      this.$http.put('/prospection/admin/' +this.$route.params.id, bodyObject)
+        .then( (res) => {
+         console.log(res);
+        })
     }
   }
 }

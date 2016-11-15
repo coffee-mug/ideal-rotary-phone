@@ -85,18 +85,19 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
 /*
   blue: rgb(75,168,163);
   grey: rgb(178,178,180);
   brown: rgb(195,152,140); 
   orange: rgb(247,177,60);
 */
-
+/*
 @font-face {
   font-family: MarketDeco;
   src: url(Market_Deco.woff);
 }
+*/
 
 body {
   background-color: #04030F;
