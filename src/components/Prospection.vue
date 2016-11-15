@@ -1,5 +1,5 @@
 <template>
-<div class="container">
+<div class="container prospection-top-bar">
   <div class="row">
     <div class="col-md-12 col-xs-12">
       <div class="logo-bar">
@@ -48,6 +48,8 @@
 </template>
 
 <script>
+import moment from 'moment';
+
 export default {
 	data() {
 		return {
@@ -69,7 +71,8 @@ export default {
           city: this.city,
           postalCode: this.postalCode,
           telephone: this.telephone,
-          email: this.email
+          email: this.email,
+          created_at: Object.create(Date).now(),
         }).then( (response) => {
 					// success
           console.log("SUCCESS!: ", response.body);
@@ -79,13 +82,12 @@ export default {
           console.log("ERROR!: ", response.body);
 				});
 		},
-
 	}
 }
 
 </script>
 
-<style scoped>
+<style> 
 /*
   blue: rgb(75,168,163);
   grey: rgb(178,178,180);
@@ -186,7 +188,7 @@ label {
   background: -webkit-linear-gradient(-40deg, rgb(75, 168, 163) 33%, rgb(195,152,140) 33%, rgb(195,152,140) 67%, rgb(247,177,60) 67% ); 
 }
 
-:after, :before {
+.prospection-top-bar:after, .prospection-top-bar:before {
   position: fixed;
   width: 20vw;
   height: 5vh;

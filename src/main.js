@@ -12,6 +12,7 @@ import Salon from './components/Salon.vue'
 import Prospection from './components/Prospection.vue'
 import ProspectionAdmin from './components/ProspectionAdmin.vue'
 import ProspectionAdminItem from './components/ProspectionAdminItem.vue'
+import moment from 'moment'
 
 Vue.use(VueRouter);
 Vue.use(VueResource);

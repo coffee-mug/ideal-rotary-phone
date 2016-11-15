@@ -100,6 +100,7 @@ app.post('/admin/salon/:user_id', (req, res) => {
 });
 
 app.post('/prospection', (req, res) => {
+  // Fucking code smell, need to change that like for put verb
   return new Prospection({
     store_name: req.body.storeName,
     address: req.body.address,
@@ -107,7 +108,8 @@ app.post('/prospection', (req, res) => {
     city: req.body.city,
     postal_code: req.body.postalCode,
     telephone: req.body.telephone,
-    email: req.body.email
+    email: req.body.email,
+    created_at: req.body.created_at
   })
   .save()
   .then( (saved) => {
@@ -147,6 +149,9 @@ app.put('/prospection/admin/:id', (req, res) => {
     fields_to_update.forEach( (e) => {
       updateObject[e] = req.body[e]
     });
+
+    // Add updated timestamp
+    updateObject['updated_at'] = Object.create(Date).now();
 
     
     Prospection

@@ -63,7 +63,7 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
 body {
   background-color: #04030F;
   font-family: 'Lato', sans-serif;

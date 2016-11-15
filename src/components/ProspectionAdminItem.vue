@@ -1,14 +1,18 @@
 <template>
-<div>
-  <h1></h1>
-  <form> 
-    <template v-for="(value, key) in prospect">
-      <div class="form-group">
-        <label>{{ key }}</label>
-        <input v-model="prospect[key]" :value="value" placeholder="value" @keydown.enter.prevent="updateField(key)"></input>
-      </div>
-    </template>
-  </form>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 col-xs-12">
+      <h1>Prospect details</h1>
+      <form> 
+        <template v-for="(value, key) in prospect">
+          <div class="form-group">
+            <label>{{ key }}</label>
+            <input class="form-control" v-model="prospect[key]" :value="value" placeholder="value" @keydown.enter.prevent="updateField(key)"></input>
+          </div>
+        </template>
+      </form>
+    </div>
+  </div>
 </div>
 </template>
 
