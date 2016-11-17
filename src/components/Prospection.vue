@@ -51,6 +51,7 @@
 import moment from 'moment';
 
 // French locale
+moment.locale('fr');
 
 export default {
 	data() {
