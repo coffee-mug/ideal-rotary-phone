@@ -50,8 +50,6 @@
 <script>
 import moment from 'moment';
 
-// French locale
-moment.locale('fr');
 
 export default {
 	data() {
@@ -67,6 +65,9 @@ export default {
 	},
 	methods: {
 		signup() {
+        // French locale
+        moment.locale('fr');
+
 				this.$http.post('/prospection', { 
           storeName: this.storeName, 
           address: this.address,

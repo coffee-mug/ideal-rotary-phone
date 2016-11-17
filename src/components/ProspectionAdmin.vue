@@ -26,6 +26,8 @@
 <script>
 import moment from "moment";
 
+moment.locale('fr');
+
 export default {
   data() {
     return {
