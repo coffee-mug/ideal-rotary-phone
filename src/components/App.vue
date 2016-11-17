@@ -18,6 +18,10 @@ export default {
 </script>
 
 <style>
+body {
+  background-color: #04030F;
+  font-family: 'Lato' sans-serif; 
+}
 h1 {
   font-family: 'Sacramento', cursive;
   color: #eee;

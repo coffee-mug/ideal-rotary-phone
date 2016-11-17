@@ -1,5 +1,5 @@
 <template>
-<div class="container prospection-top-bar">
+<div class="container prospection-top-bar prospection-container">
   <div class="row">
     <div class="col-md-12 col-xs-12">
       <div class="logo-bar">
@@ -9,7 +9,7 @@
   <div class="row">
     <div class="col-md-6 col-md-offset-3 col-xs-12">
       <div class="form-container">
-        <form @submit.prevent="signup()">
+        <form @submit.prevent="signup()" class="prospection">
           <h1> Inscription </h1>
           <div class="form-group">
             <label for="storeName">Nom du Salon</label>
@@ -36,7 +36,7 @@
             <input v-model="prospect.email" type="email" class="form-control" placeholder="">
           </div>
           <div class="form-group">
-            <label for="telephone">Téléphone du Salon</label>
+            <label for="telephone">Telephone du Salon</label>
             <input v-model="prospect.telephone" type="tel" class="form-control" placeholder="">
           </div>
           <div class="form-group">
@@ -44,8 +44,8 @@
             <input v-model="prospect.contact_name" class="form-control" placeholder="">
           </div>
           <div class="form-group">
-            <label for="telephone">Téléphone du Contact</label>
-            <input v-model="prospect.contact_number" class="form-control" placeholder="">
+            <label for="telephone">Telephone du Contact</label>
+            <input v-model="prospect.contact_number" type="tel" class="form-control" placeholder="">
           </div>
           <div class="form-group">
             <label for="telephone">Commentaires</label>
@@ -104,7 +104,7 @@ export default {
 
 </script>
 
-<style> 
+<style scoped> 
 /*
   blue: rgb(75,168,163);
   grey: rgb(178,178,180);
@@ -116,19 +116,14 @@ export default {
   src: url(Market_Deco.woff);
 }
 
-body {
-  background-color: #04030F;
-  font-family: 'Lato', sans-serif;
-}
-
-.form-container {
+.prospection-container .form-container {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100vh;
 }
 
-form {
+form.prospection {
   font-family: MarketDeco;
   padding: 30px;
   border: 8px solid transparent;
@@ -140,16 +135,16 @@ form {
   position: fixed;
 }
 
-form h1 {
+form.prospection h1 {
   font-family: MarketDeco;
   text-align: center;
   color: #eee;
   font-weight: bold;
   font-size: 2.1em;
-  margin: 15px 0;
+  margin: 5px 0;
 }
 
-.form-control {
+form.prospection .form-control {
   font-family: Verdana, sans-serif;
   font-size: 1.1em;
   border-top: none;
@@ -159,22 +154,22 @@ form h1 {
   transition: border-color ease-in-out 0.2s;
 }
 
-.form-control:focus {
+form.prospection .form-control:focus {
   border: 2px solid #0197F6;
   box-shadow: none;
 }
 
-input.form-control {
+form.prospection input.form-control {
   border-radius: 0;
   background-color: rgba(255, 255, 255,0.65);
   color: #333;
 }
 
-label {
+form.prospection label {
   color: #333;
 }
 
-.submit-btn {
+form.prospection button.submit-btn {
   box-sizing: border-box;
   display: block;
   margin: 0 auto;
@@ -191,7 +186,7 @@ label {
   text-transform: uppercase;
 }
 
-.submit-btn:hover {
+form.prospection button.submit-btn:hover {
   background-color: rgb(75,168,163);
   -webkit-border-image: none;
 }

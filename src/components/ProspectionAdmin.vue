@@ -12,7 +12,7 @@
         <template>
           <tr v-for="p in prospects">
             <td><router-link :to="{ name: 'prospects', params: { id: p.id }}">  {{ p.store_name }} </router-link></td>
-            <td> {{ p.email }} </td>
+            <td> {{ p.contact_name }} </td>
             <td> {{ p.created_at }} </td>
             <td> {{ p.updated_at }} </td>
           </tr>
