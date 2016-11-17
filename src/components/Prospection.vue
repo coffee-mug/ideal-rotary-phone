@@ -50,6 +50,8 @@
 <script>
 import moment from 'moment';
 
+// French locale
+
 export default {
 	data() {
 		return {
@@ -72,7 +74,7 @@ export default {
           postalCode: this.postalCode,
           telephone: this.telephone,
           email: this.email,
-          created_at: Object.create(Date).now(),
+          created_at: moment(new Date()).format("YYYY-MM-DD HH:mm:ss"),
         }).then( (response) => {
 					// success
           console.log("SUCCESS!: ", response.body);

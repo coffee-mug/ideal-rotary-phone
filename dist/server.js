@@ -5,6 +5,8 @@ var bodyParser = require('body-parser');
 
 var Prospection = require('./models/prospection');
 
+var moment = require('moment');
+
 app = express();
 app.use(serveStatic(__dirname));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -64,7 +66,7 @@ app.put('/prospection/admin/:id', (req, res) => {
     });
 
     // Add updated timestamp
-    updateObject['updated_at'] = Object.create(Date).now();
+    updateObject['updated_at'] = moment(new Date()).format("YYYY-MM-DD HH:mm:ss");
 
     
     Prospection

@@ -14,6 +14,8 @@ var Users = require('./models/users');
 var Store = require('./models/stores');
 var Prospection = require('./models/prospection');
 
+var moment = require('moment');
+
 var app = express();
 
 var PORT = process.env.PORT || 6000;
@@ -151,7 +153,7 @@ app.put('/prospection/admin/:id', (req, res) => {
     });
 
     // Add updated timestamp
-    updateObject['updated_at'] = Object.create(Date).now();
+    updateObject['updated_at'] = moment(new Date()).format("YYYY-MM-DD HH:mm:ss");
 
     
     Prospection
