@@ -111,12 +111,10 @@ export default {
   brown: rgb(195,152,140); 
   orange: rgb(247,177,60);
 */
-/*
 @font-face {
   font-family: MarketDeco;
   src: url(Market_Deco.woff);
 }
-*/
 
 body {
   background-color: #04030F;
@@ -132,12 +130,14 @@ body {
 
 form {
   font-family: MarketDeco;
-  padding: 40px;
+  padding: 30px;
   border: 8px solid transparent;
   -webkit-border-image:-webkit-linear-gradient(top right, rgb(247,177,60) 40%,rgb(195,152,140) 40%, rgb(195,152,140) 60%, rgb(75,168,163) 60% ); 
   border-image-slice: 1;
   min-width: 25vw;
   background: rgb(178,178,178);
+  margin-bottom: 5vh;
+  position: fixed;
 }
 
 form h1 {
@@ -180,7 +180,7 @@ label {
   margin: 0 auto;
   min-width: 24.5vw;
   padding: 7px;
-  margin-top: 5vh;
+  margin-top: 2vh;
   background-color: #04030F;
   border: 1px solid transparent;
   -webkit-border-image:-webkit-linear-gradient(top right, rgb(247,177,60) 40%,rgb(195,152,140) 40%, rgb(195,152,140) 60%, rgb(75,168,163) 60% ); 
@@ -207,7 +207,7 @@ label {
 
 .prospection-top-bar:after, .prospection-top-bar:before {
   position: fixed;
-  width: 20vw;
+  width: 19vw;
   height: 5vh;
   border-right: 5vh solid rgb(247,177,60);
   border-bottom: 5vh solid rgb(195,152,140);  
