@@ -20,7 +20,7 @@
             <input v-model="prospect.address" class="form-control" placeholder="">
           </div>
           <div class="form-group">
-            <label for="addressDetails">Complément d'adresse</label>
+            <label for="addressDetails">Complement d'adresse</label>
             <input v-model="prospect.address_details" class="form-control" placeholder="">
           </div>
           <div class="form-group">
@@ -120,7 +120,8 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 95vh;
+  max-height: 95vh;
 }
 
 form.prospection {

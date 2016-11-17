@@ -5,13 +5,14 @@ import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
 
 // Components
-import App from './components/App.vue'
-import Signup from './components/Signup.vue'
-import Login from './components/Login.vue'
-import Salon from './components/Salon.vue'
-import Prospection from './components/Prospection.vue'
-import ProspectionAdmin from './components/ProspectionAdmin.vue'
-import ProspectionAdminItem from './components/ProspectionAdminItem.vue'
+import App from './components/App.vue';
+import Signup from './components/Signup.vue';
+import Login from './components/Login.vue';
+import Salon from './components/Salon.vue';
+import Prospection from './components/Prospection.vue';
+import ProspectionAdmin from './components/ProspectionAdmin.vue';
+import ProspectionAdminItem from './components/ProspectionAdminItem.vue';
+import Calendar from './components/Calendar/Calendar.vue';
 import moment from 'moment'
 
 Vue.use(VueRouter);
@@ -39,6 +40,7 @@ const routes = [
     { path: '/prospection', component: Prospection },
     { path: '/prospection/admin', component: ProspectionAdmin },
     { path: '/prospection/admin/:id', component: ProspectionAdminItem, name:"prospects" },
+    { path: '/project/calendar', component: Calendar, name: "calendar" },
       salon
 ]
 
