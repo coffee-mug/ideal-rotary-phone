@@ -12,32 +12,44 @@
         <form @submit.prevent="signup()">
           <h1> Inscription </h1>
           <div class="form-group">
-            <label for="storeName">Nom</label>
-            <input v-model="storeName"  class="form-control" placeholder="">
+            <label for="storeName">Nom du Salon</label>
+            <input v-model="prospect.store_name"  class="form-control" placeholder="">
           </div>
           <div class="form-group">
             <label for="address">Adresse</label>
-            <input v-model="address" class="form-control" placeholder="">
+            <input v-model="prospect.address" class="form-control" placeholder="">
           </div>
           <div class="form-group">
-            <label for="addressDetails">Complement d'adresse</label>
-            <input v-model="addressDetails" class="form-control" placeholder="">
+            <label for="addressDetails">Complément d'adresse</label>
+            <input v-model="prospect.address_details" class="form-control" placeholder="">
           </div>
           <div class="form-group">
             <label for="city">Ville</label>
-            <input v-model="city" class="form-control" placeholder="">
+            <input v-model="prospect.city" class="form-control" placeholder="">
           </div>
           <div class="form-group">
             <label for="postalCode">Code postal</label>
-            <input v-model="postalCode" type="text" class="form-control" placeholder="">
+            <input v-model="prospect.postal_code" type="text" class="form-control" placeholder="">
           </div>
           <div class="form-group">
             <label for="email">Email</label>
-            <input v-model="email" type="email" class="form-control" placeholder="">
+            <input v-model="prospect.email" type="email" class="form-control" placeholder="">
           </div>
           <div class="form-group">
-            <label for="telephone">Telephone</label>
-            <input v-model="telephone" type="tel" class="form-control" placeholder="">
+            <label for="telephone">Téléphone du Salon</label>
+            <input v-model="prospect.telephone" type="tel" class="form-control" placeholder="">
+          </div>
+          <div class="form-group">
+            <label for="telephone">Contact principal</label>
+            <input v-model="prospect.contact_name" class="form-control" placeholder="">
+          </div>
+          <div class="form-group">
+            <label for="telephone">Téléphone du Contact</label>
+            <input v-model="prospect.contact_number" class="form-control" placeholder="">
+          </div>
+          <div class="form-group">
+            <label for="telephone">Commentaires</label>
+            <input v-model="prospect.contact_comments" class="form-control" placeholder="">
           </div>
           <button @click.prevent="signup()" type="submit" class="submit-btn">S'inscrire</button>
         </form>
@@ -50,17 +62,24 @@
 <script>
 import moment from 'moment';
 
+var prospect_model = {
+    store_name: '',
+    address: '',
+    address_details: '',
+    city: '',
+    postal_code: '',
+    telephone: '',
+    email: '',
+    contact_name: '',
+    contact_number: '',
+    contact_comments: '',
+    created_at: ''
+  }
 
 export default {
 	data() {
 		return {
-      storeName: '',
-      address: '',
-      addressDetails: '',
-      city: '',
-      postalCode: '',
-      telephone: '',
-      email: ''
+      prospect: Object.assign({}, prospect_model, { created_at: moment(new Date()).format("YYYY-MM-DD HH:mm:ss") })
 		}
 	},
 	methods: {
@@ -68,18 +87,12 @@ export default {
         // French locale
         moment.locale('fr');
 
-				this.$http.post('/prospection', { 
-          storeName: this.storeName, 
-          address: this.address,
-          addressDetails: this.address_details,
-          city: this.city,
-          postalCode: this.postalCode,
-          telephone: this.telephone,
-          email: this.email,
-          created_at: moment(new Date()).format("YYYY-MM-DD HH:mm:ss"),
-        }).then( (response) => {
+				this.$http.post('/prospection',
+          this.prospect
+        ).then( (response) => {
 					// success
           console.log("SUCCESS!: ", response.body);
+          this.prospect = Object.assign({}, prospect_model, { created_at: moment(new Date()).format("YYYY-MM-DD HH:mm:ss") });
           window.localStorage.setItem('id', response.body.saved.id);
 				}, (response) => {
 					// error...

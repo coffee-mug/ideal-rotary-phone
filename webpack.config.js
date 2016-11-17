@@ -45,31 +45,31 @@ module.exports = {
     noInfo: true,
     proxy: {
         '/signup': {
-            target: 'http://localhost:6000',
+            target: 'http://localhost:8000',
             secure: false
         },
         '/login': {
-            target: 'http://localhost:6000',
+            target: 'http://localhost:8000',
             secure: false
         },
         '/logout': {
-            target: 'http://localhost:6000',
+            target: 'http://localhost:8000',
             secure: false
         },
         '/users': {
-            target: 'http://localhost:6000',
+            target: 'http://localhost:8000',
             secure: false
         },
         '/users/*': {
-            target: 'http://localhost:6000',
+            target: 'http://localhost:8000',
             secure: false
         },
         '/admin/*': {
-            target: 'http://localhost:6000',
+            target: 'http://localhost:8000',
             secure: false
         },
         '/prospection/*': {
-            target: 'http://localhost:6000',
+            target: 'http://localhost:8000',
             secure: false
         },
     },

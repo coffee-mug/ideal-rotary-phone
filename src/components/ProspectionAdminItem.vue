@@ -3,8 +3,9 @@
   <div class="row">
     <div class="col-md-12 col-xs-12">
       <h1>Prospect details</h1>
+      <router-link :to="{ path: '/prospection/admin' }">Back to Admin </router-link>
       <form> 
-        <template v-for="(value, key) in prospect">
+        <template v-for="(value, key) in prospect" v-if="['id', 'created_at', 'updated_at'].indexOf(key) === -1">
           <div class="form-group">
             <label>{{ key }}</label>
             <input class="form-control" v-model="prospect[key]" :value="value" placeholder="value" @keydown.enter.prevent="updateField(key)"></input>
