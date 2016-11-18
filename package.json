@@ -6,9 +6,11 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --port 7000 --open --inline --hot",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
-    "deploy": "git subtree push --prefix dist heroku master"
+    "deploy": "git subtree push --prefix dist heroku master",
+    "test": "karma start karma.conf.js"
   },
   "dependencies": {
+    "babel-preset-es2015": "^6.18.0",
     "body-parser": "^1.15.2",
     "bookshelf": "^0.10.2",
     "bootstrap": "^3.3.7",
@@ -30,10 +32,15 @@
   "devDependencies": {
     "babel-core": "^6.0.0",
     "babel-loader": "^6.0.0",
-    "babel-preset-es2015": "^6.0.0",
     "cross-env": "^3.0.0",
     "css-loader": "^0.25.0",
     "file-loader": "^0.9.0",
+    "karma": "^1.3.0",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-coverage": "^1.1.1",
+    "karma-phantomjs-launcher": "^1.0.2",
+    "karma-tap": "^3.1.1",
+    "karma-webpack": "^1.8.0",
     "tape": "^4.6.2",
     "vue-loader": "^9.7.0",
     "webpack": "^2.1.0-beta.25",
