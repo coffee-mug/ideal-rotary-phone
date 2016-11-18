@@ -12,6 +12,8 @@ import Salon from './components/Salon.vue';
 import Prospection from './components/Prospection.vue';
 import ProspectionAdmin from './components/ProspectionAdmin.vue';
 import ProspectionAdminItem from './components/ProspectionAdminItem.vue';
+import Day from './components/Day.vue';
+
 import moment from 'moment'
 
 Vue.use(VueRouter);
@@ -39,6 +41,7 @@ const routes = [
     { path: '/prospection', component: Prospection },
     { path: '/prospection/admin', component: ProspectionAdmin },
     { path: '/prospection/admin/:id', component: ProspectionAdminItem, name:"prospects" },
+    { path: '/project/day', component: Day },
       salon
 ]
 
