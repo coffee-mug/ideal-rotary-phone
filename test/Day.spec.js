@@ -16,7 +16,7 @@ test('Number of hours slots', assert => {
   const actual = vm.slots.length;
   const expected = (dayHourEnd - dayHourStart) * 60 / appointmentDuration;
 
-  assert.equal(actual, expected, 'The number of hours slots should be equal to the difference of the "closing" hour and "starting hour" for appointments multiplied by 60, divided by the appointment duration set');
+  assert.equal(actual, expected, 'The number of hours slots should be equal to the difference of the "closing" hour and "starting hour" for appointments multiplied by 60, divided by the appointment duration set divivded by 2');
 
   assert.end()
 });
@@ -24,7 +24,7 @@ test('Number of hours slots', assert => {
 test('Displayed slots number', assert => {
   const vm = new Vue(Day).$mount();
 
-  const actual = vm.$el.querySelectorAll('div.day-container > div').length;
+  const actual = vm.$el.querySelectorAll('div.day-container div.day-slot').length;
   const expected = vm.slots.length;
 
   assert.equal(actual, expected, 'The number of divs displayed should be equal to the length of slots Array');
@@ -38,7 +38,7 @@ test('Slot state change on click', assert => {
 
   var slot = vm.slots[0],
       slotState = slot.isFree,
-      divSlot = vm.$el.querySelectorAll('div.day-container > div')[0];
+      divSlot = vm.$el.querySelectorAll('div.day-container div.day-slot')[0];
 
   // Toggle on click
   divSlot.click();
@@ -59,14 +59,14 @@ test('Slot state change on click', assert => {
 test('Busy slot state class toggle', assert => {
   const vm = new Vue(Day).$mount();
 
-  var divSlot = vm.$el.querySelectorAll('div.day-container > div')[0],
+  var divSlot = vm.$el.querySelectorAll('div.day-container div.day-slot')[0],
       isFree = vm.slots[0].isFree;
 
   if (isFree) divSlot.click(); // Turn slot busy
   
   // Try to see if asynchronous make it pass (it works on client)
   Vue.nextTick( () => {
-    const actual = vm.$el.querySelectorAll('div.day-container > div')[0].classList.contains('busy');
+    const actual = vm.$el.querySelectorAll('div.day-container div.day-slot')[0].classList.contains('busy');
     const expected = true;
 
     assert.equal(actual,expected,'Busy slot should contain the busy class');
@@ -75,4 +75,20 @@ test('Busy slot state class toggle', assert => {
   assert.end();
 });
 
+test('Slot starting and end hour', assert => {
+  const vm = new Vue(Day).$mount();
 
+  var startingHour = vm.slots[0].startHour,
+      endingHour = vm.slots[0], endingHour,
+      isDefined;
+
+  isDefined = (hour) => { return typeof hour !== undefined && hour !== null && hour !== "" };
+
+  assert.equal(isDefined(startingHour), true, 'Starting hour should be set with hours and minutes like HH:mm');
+  assert.equal(isDefined(endingHour), true, 'Ending hour should be set with hours and minutes like HH:mm');
+  assert.equal(endingHour > startingHour, true, 'Slot\'s end date should be greater than starting one');
+
+});
+
+// Need to test that the new funciton to be created "GetSlotIndexFromHour" gives back the right index from the slot arrays.
+// Simply : hourdiff with startHour * 60 divided by appointmentDuration + minutes / appointmentDuration. Test with imaginary values
