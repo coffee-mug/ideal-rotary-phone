@@ -14,6 +14,7 @@ import ProspectionAdmin from './components/ProspectionAdmin.vue';
 import ProspectionAdminItem from './components/ProspectionAdminItem.vue';
 import Day from './components/Day.vue';
 import Landing from './components/Landing.vue';
+import Landing_alt from './components/Landing_alt.vue';
 
 import moment from 'moment'
 
@@ -44,6 +45,7 @@ const routes = [
     { path: '/prospection/admin/:id', component: ProspectionAdminItem, name:"prospects" },
     { path: '/project/day', component: Day },
     { path: '/project/landing', component: Landing },
+    { path: '/', component: Landing_alt },
       salon
 ]
 

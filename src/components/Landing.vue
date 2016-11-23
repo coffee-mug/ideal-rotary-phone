@@ -87,16 +87,19 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 @font-face {
   font-family: MarketDeco;
   src: url(Market_Deco.woff);
 }
 
+
+/*
 #app {
   background: url('https://s3.amazonaws.com/tereza-landing/Landing+pack/Images/Paris-Back.jpg') 0% 0%; 
   background-size: 100vw 2400px;
 }
+*/
 
 h1, h2 {
   font-family: MarketDeco;
