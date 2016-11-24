@@ -38,11 +38,9 @@ var salon = {
 }
 
 const routes = [
-    { path: '/signup', component: Signup },
-    { path: '/login', component: Login },
     { path: '/prospection', component: Prospection },
-    { path: '/prospection/admin', component: ProspectionAdmin },
-    { path: '/prospection/admin/:id', component: ProspectionAdminItem, name:"prospects" },
+    { path: '/prospection/goguys/admin', component: ProspectionAdmin },
+    { path: '/prospection/goguys/admin/:id', component: ProspectionAdminItem, name:"prospects" },
     { path: '/project/day', component: Day },
     { path: '/project/landing', component: Landing },
     { path: '/', component: Landing_alt },

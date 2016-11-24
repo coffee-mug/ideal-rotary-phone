@@ -57,14 +57,15 @@
     <div class="row">
       <div class="col-md-4 col-md-offset-4">
         <h3 class="text-center cyan title-blackBg bottom-cta">Tentez l'experience</h3>
-        <form class="form-inline" @submit.prevent="signup()" >
+        <form @submit.prevent="signup()" >
           <div class="form-group">
-            <input class="form-control" v-model="email" placeholder="majolieadressse@amoi.fr">
-            <select class="form-control" v-model="role">
+            <input class="form-control" type="email" v-model="email" placeholder="majolieadressse@amoi.fr" required>
+            <select class="form-control" v-model="role" required>
               <option>Coiffeur</option>
               <option>Utilisateur</option>
             </select>
             <button class="btn btn-primary" type="submit">Je vous suis !</button>
+            <div class="help-block"></div>
           </div>
         </form>
       </div>
@@ -95,17 +96,34 @@ export default {
   data() {
     return {
       email: '',
-      role: ''
+      role: '',
     }  
   },
   methods: {
     signup() {
         moment.locale('fr');
-        if (this.email == '' || this.role == '')  {
-          throw new Error('email and role field must be filled');
-        };
+        if ( !this.validateEmail(this.email) ) {
+          var button = document.querySelector('button[type="submit"]');
 
-        var prospect = Object.assign({}, prospect_model, { created_at: moment(new Date()).format("YYYY-MM-DD HH:mm:ss"), email: this.email, contact_comments: this.role });
+          document.querySelector('.form-group').classList.toggle('has-error');
+          button.innerHTML = 'Adresse email incorrecte';
+          button.classList.toggle('button-error');
+          
+          // Reset button style after 1s
+          window.setTimeout( function() {
+            button.innerHTML = "Je vous suis !";
+            button.classList.toggle('button-error');
+          }, 2000);
+
+          return new Error('Oups l\'adresse email saisie est invalide');
+        }
+
+        var prospect = Object.assign({}, prospect_model, { 
+          created_at: moment(new Date()).format("YYYY-MM-DD HH:mm:ss"), 
+          email: this.email, 
+          contact_comments: this.role,
+          store_name: this.email
+        });
 
         console.log(prospect); 
 
@@ -120,9 +138,12 @@ export default {
           // error...
           console.log("ERROR!: ", response.body);
         });
-      
+    },
+    validateEmail: function(email) {
+      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(email);
     }
-  }
+  },
 }
 
 </script>
@@ -240,6 +261,16 @@ button {
 button:hover {
   background: #fff;
   color: cyan;
+}
+
+button:focus {
+  background: #fff;
+  color: cyan;
+}
+
+.button-error {
+  background: red;
+  color: #fff;
 }
 
 </style>
