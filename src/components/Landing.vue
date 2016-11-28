@@ -154,10 +154,13 @@ export default {
   src: url(Market_Deco.woff);
 }
 
+
+/*
 #app {
   background: url('https://s3.amazonaws.com/tereza-landing/Landing+pack/Images/Paris-Back.jpg') 0% 0%; 
   background-size: 100vw 3000px;
 }
+*/
 
 h1, h2, h3 {
   font-family: MarketDeco;

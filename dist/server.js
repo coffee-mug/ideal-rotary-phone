@@ -108,9 +108,6 @@ app.post('/prospection', (req, res) => {
   var fields_to_update,
       newProspect;
 
-  // While curent implementation allow for one update, this will make updating several
-  // fields easier. 
-  // @returns an array containing the fields to update
   fields_to_update = Object.keys(req.body).map( (e) => { return e });
 
   newProspect = {};
@@ -118,6 +115,10 @@ app.post('/prospection', (req, res) => {
   fields_to_update.forEach( (e) => {
     newProspect[e] = req.body[e]
   });
+
+  if (newProspect['email'] === "" || newProspect['contact_comments'] === "") {
+    return new Error('New Prospect from Landing page does not have an email or a role');
+  }
 
   // DEBUG
   console.log('NewProspect content: ', newProspect);

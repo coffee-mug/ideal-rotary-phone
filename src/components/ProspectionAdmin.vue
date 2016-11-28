@@ -62,19 +62,12 @@ export default {
 </script>
 
 <style>
+#app > div {
+  color: #333;
+}
+
 h1 {
-  color: #fff;
   margin-bottom: 18px;
 }
-
-.prospects-list li {
-  color: #fff;
-}
-
-table {
-  color: #fff;
-}
-
-
 
 </style>

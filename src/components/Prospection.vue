@@ -122,6 +122,10 @@ export default {
   src: url(Market_Deco.woff);
 }
 
+#app > div {
+  background-color: #000;
+}
+
 form.prospection {
   padding: 30px;
   border: 8px solid transparent;
