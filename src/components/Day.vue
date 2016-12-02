@@ -1,26 +1,8 @@
 <template>
 <div class="day-container container">
   <div class="row">
-    <div class="flex-container">
-      <form class="form-inline">
-        <div class="form-group">
-          <label for="searchTime">StartTime</label>
-          <input v-model="searchTime" placeholder="Time of appointment" />
-        </div>
-        <div class="form-group">
-          <label for="prestations">Prestation</label>
-          <select v-model="selected" id="prestations" name="">
-            <option v-for="option in prestations" :value="option.type">
-              {{ option.type }}
-            </option>
-          </select>
-          <button class="btn pbtn-primary" @click="hourToAppointment(searchTime,null,45)">Test</button>
-        </div>
-      </form>
-      
-      <div v-for="s in slots" @click.prevent="toggleAppointment(s)" :class="{ busy: !s.isFree }" class="day-slot">
+    <div v-for="s in slots" @click.prevent="toggleAppointment(s)" :class="{ busy: !s.isFree }" class="day-slot">
         <h3> <span> App: {{s.startHour}} : {{s.endingHour }} </span> {{ s.isFree }} </h3>
-      </div>
     </div>
   </div>
 </div>
@@ -30,10 +12,9 @@
 import moment from 'moment';
 
 export default {
+  props: ['days', 'dayHourStart', 'dayHourEnd'],
   data() {
     return {
-      dayHourStart: 9,
-      dayHourEnd: 19,
       appointmentDuration: 15,
       slots: [],
       selected: 'CH',
@@ -108,9 +89,8 @@ export default {
       end = end || null;
 
       matchedSlots = [];
-    
       startDate = moment(start, 'HH:mm').format('HH:mm');
-      
+
       if (end) {
         // We already have an ending date
         endDate = moment(end, 'HH:mm').format('HH:mm');
@@ -118,7 +98,6 @@ export default {
         // Thanks moment.js
         endDate = moment(startDate, 'HH:mm').add(duration, 'minutes').format('HH:mm');
       }
-      
       console.log("Startdate ", startDate, "EndDate ", endDate);
 
       this.slots.filter( (e, ind) => {
