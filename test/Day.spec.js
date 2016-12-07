@@ -88,6 +88,8 @@ test('Slot starting and end hour', assert => {
   assert.equal(isDefined(endingHour), true, 'Ending hour should be set with hours and minutes like HH:mm');
   assert.equal(endingHour > startingHour, true, 'Slot\'s end date should be greater than starting one');
 
+  assert.end();
+
 });
 
 // Need to test that the new funciton to be created "GetSlotIndexFromHour" gives back the right index from the slot arrays.
