@@ -1,5 +1,5 @@
 <template>
-<div>
+<div id="app">
   <div class="top-bar">
     <img src="https://s3.amazonaws.com/tereza-landing/Landing+pack/Icones/Tereza-LOGOTYPE.png">
   </div>

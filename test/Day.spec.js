@@ -63,7 +63,7 @@ test('Busy slot state class toggle', assert => {
       isFree = vm.slots[0].isFree;
 
   if (isFree) divSlot.click(); // Turn slot busy
-  
+
   // Try to see if asynchronous make it pass (it works on client)
   Vue.nextTick( () => {
     const actual = vm.$el.querySelectorAll('div.day-container div.day-slot')[0].classList.contains('busy');
@@ -89,8 +89,21 @@ test('Slot starting and end hour', assert => {
   assert.equal(endingHour > startingHour, true, 'Slot\'s end date should be greater than starting one');
 
   assert.end();
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6ada27f10730674f193856ccbd1b93dd9851cb31
 });
-
 // Need to test that the new funciton to be created "GetSlotIndexFromHour" gives back the right index from the slot arrays.
 // Simply : hourdiff with startHour * 60 divided by appointmentDuration + minutes / appointmentDuration. Test with imaginary values
+test('hourToAppointment right index to toggle', assert => {
+    const vm = new Vue(Day).$mount();
+    var indexToToggle = '';
+
+    //hourToAppointment should return the slot Index to toggle
+    indexToToggle = Day.methods.hourToAppointment('09:00', 30);
+
+    assert.equal(0, indexToToggle, 'Index to toggle should be 0');
+
+    assert.end();
+});
