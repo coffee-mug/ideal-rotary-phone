@@ -17,8 +17,9 @@ import Landing from './components/Landing.vue';
 import Landing_alt from './components/Landing_alt.vue';
 import Calendrier from './components/Calendrier.vue';
 
-import Coordinates from './components/coiffeur_profile/Coordinates.vue';
+import profile from './components/coiffeur_profile/profile.vue';
 import Card from './components/funnel/Card.vue';
+import HairdressersList from './components/funnel/HairdressersList.vue';
 
 import moment from 'moment'
 
@@ -49,8 +50,9 @@ const routes = [
     { path: '/project/calendar', component: Calendrier },
     { path: '/project/landing', component: Landing },
     { path: '/', component: Landing_alt },
-    { path: '/project/form-blueprint', component: Coordinates },
+    { path: '/project/profile', component: profile },
     { path: '/project/card', component: Card },
+    { path: '/project/list', component: HairdressersList },
       salon
 ]
 

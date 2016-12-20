@@ -9,32 +9,32 @@
         <p class="subtitle">Coiffeur spécialisé en couleurs</p>
         <p>185, rue Raymond Losserand</p>
         <p>75014, Paris</p>
-        <button class="btn btn-primary">Prendre rendez-vous</button>
+        <button class="btn btn-primary">TEST</button>
       </div>
     </div>
     <div class="card-calendar">
       <div class="calendar-header">
-          <div class="changeDateRange" @click.prevent="updateRootDate('decrement')">&lt;</div>
-          <div class="calendar-col-header">{{ startDate }}</div>
-          <div class="calendar-col-header">{{ nextDate(1) }}</div>
-          <div class="calendar-col-header">{{ nextDate(1) }}</div>
-          <div class="changeDateRange" @click.prevent="updateRootDate('increment')">&gt;</div>
+          <div class="changeDateRange" @click="updateRootDate('decrement')">&lt;</div>
+          <div class="calendar-col-header">{{ this.startDate }}</div>
+          <div class="calendar-col-header">{{ this.secondDate }}</div>
+          <div class="calendar-col-header">{{ this.thirdDate }}</div>
+          <div class="changeDateRange" @click="updateRootDate('increment')">&gt;</div>
       </div>
       <div class="calendar-cols">
         <div class="calendar-col-1">
-          <div v-for="spot in parseAppointments(this.start)" :class="{ 'calendar-slot-free': spot.isFree }">
+          <div v-for="spot in parseAppointments(startDate.toString())" :class="{ 'calendar-slot-free': spot.isFree }">
             <p v-if="spot.isFree" class="text-center"> {{ spot.spot }} </p>
             <p v-else="!spot.isFree" class="text-center"> - </p>
           </div>
         </div>
         <div class="calendar-col-2">
-          <div v-for="spot in parseAppointments(this.start)" :class="{ 'calendar-slot-free': spot.isFree }">
+          <div v-for="spot in parseAppointments(secondDate.toString())" :class="{ 'calendar-slot-free': spot.isFree }">
             <p v-if="spot.isFree" class="text-center"> {{ spot.spot }} </p>
             <p v-else="!spot.isFree" class="text-center"> - </p>
           </div>
         </div>
         <div class="calendar-col-3">
-          <div v-for="spot in parseAppointments(this.start)" :class="{ 'calendar-slot-free': spot.isFree }">
+          <div v-for="spot in parseAppointments(thirdDate.toString())" :class="{ 'calendar-slot-free': spot.isFree }">
             <p v-if="spot.isFree" class="text-center"> {{ spot.spot }} </p>
             <p v-else="!spot.isFree" class="text-center"> - </p>
           </div>
@@ -50,7 +50,6 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-around;
-  width: 700px;
   padding: 15px;
 }
 
@@ -136,25 +135,35 @@ export default {
   data() {
     return {
       start: moment(),
-      startDate: moment().format("ddd Do MMM"), 
+      startDate: moment().format('ddd Do MMM'),
       startHour: 9,
-      endHour: 11 
+      endHour: 11
+    }
+  },
+  computed: {
+    secondDate() {
+      return moment(this.startDate, 'ddd Do MMM').add(1, 'days').format('ddd Do MMM');
+    },
+    thirdDate() {
+      return moment(this.startDate, 'ddd Do MMM').add(2, 'days').format('ddd Do MMM');
     }
   },
   methods: {
-    nextDate(offset) {
-      var startCopy = Object.assign(this.start, {});
-      startCopy.add(offset, "days").format("ddd Do MMM");
-      return startCopy.format("ddd Do MMM");
+    currentDate(offset) {
+      var offset = offset || 0,
+          dateCopy = Object.assign(this.start, {});
+
+      return dateCopy.add(offset, 'days');
     },
     updateRootDate(type) {
       if (type === 'increment') {
-        this.start = this.start.add(1, "days");
+        this.start = this.start.add(3, "days");
       }
       if (type === 'decrement') {
-        this.start = this.start.subtract(5, 'days');    
+        this.start = this.start.subtract(3, 'days');
+        console.log(this.start);
       } 
-      this.startDate = this.start.format("ddd Do MMM");
+      this.startDate = this.start.format('ddd Do MMM');
     },
     parseAppointments(day) {
       /**
@@ -171,7 +180,11 @@ export default {
       http://momentjs.com/docs/#/query/is-between/
       **/
       
-      var fixtures = { '24/12/2016': [ '09:00', '09:30' ] };
+      var fixtures = { 
+         '24/12/2016': [ '09:00', '09:30' ],
+         '25/12/2016': [ '10:00', '10:30', '11:00'],
+         '31/12/2016': [ '09:00', '10:30']
+      };
 
       // if the date has some appointments, build the spots list with those appointments and filling the rest
       var results = []
@@ -180,15 +193,15 @@ export default {
       var slot = {};
       var spot = '';
 
-      console.log(day.format("DD/MM/YYYY").toString());
+      day = moment(day, "ddd Do MMM").format('DD/MM/YYYY').toString();
 
       for (var i = 0; i < amplitude; i++) {
         spot = currentSlot.format('HH:mm').toString();
         slot = { spot: spot, isFree: true };
   
         // Ugly really. But must check in order, as I am too lazy to make a reliable sort function to keep the right order 
-        if ( Object.keys(fixtures).indexOf(day.format("DD/MM/YYYY").toString()) !== -1) {
-          if ( fixtures[day.format("DD/MM/YYYY").toString()].indexOf(currentSlot.format('HH:mm').toString()) !== -1) {
+        if ( Object.keys(fixtures).indexOf(day) !== -1) {
+          if ( fixtures[day].indexOf(currentSlot.format('HH:mm').toString()) !== -1) {
             console.log("REACHED THAT ONE");
             slot['isFree'] = false;
           }
