@@ -7,14 +7,18 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     passport = require('passport'),
     localStrategy = require('passport-local').Strategy,
-    verify = require('./lib/verify.js');
-
-var signupRoute = require('./routes/signup'),
+    verify = require('./lib/verify.js'),
+    signupRoute = require('./routes/signup'),
     loginRoute = require('./routes/login');
 
+
+/*** Models **/
 var Users = require('./models/users'),
     Store = require('./models/stores'),
-    Prospection = require('./models/prospection');
+    Prospection = require('./models/prospection'),
+    wonderfulSalons = require('./models/wonderful_salons'),
+    prestations = require('./models/prestations'),
+    offers = require('./models/offers');
 
 var moment = require('moment');
 
@@ -177,6 +181,72 @@ app.put('/prospection/admin/:id', (req, res) => {
         res.json({ updatedModel });
       });
 });
+
+
+/** OK let's do the fuckings routes now */
+
+/*** SALONS ****/
+
+// GET: get all the salons, can filter by name or city.
+app.get('/salons', (req, res) => {
+  var limit,
+      name,
+      city;
+
+  limit = 10;
+  
+  req.query.name ? name = req.query.name : name = '';
+  req.query.city ? city = req.query.city : city = '';
+
+  console.log("Query Name: ", name);
+  console.log("Query City: ", city);
+
+  wonderfulSalons.query( (qb) => { 
+    qb
+    .where('city', 'LIKE', city + '%')
+    .andWhere('company_name', 'LIKE', "%" + name + "%")
+    }).fetchAll()
+    .then( (models) => {
+     res.json(models); 
+    });
+});
+
+
+// Get salons list filtered by haircut + "haircut add-ons";
+app.get('/haircuts/:coupe', (req, res) => {
+  // Given an haricut, search for the prestation id, then returns from offers list of
+  // salons using this prestation id. 
+  let prestation_id = '',
+    city = '',
+    response = [];
+
+  req.query.city ? city = req.query.city : city = '';
+
+  prestations
+    .where('prestation_name', 'LIKE', '%'+req.params.coupe+'%')
+    .fetch()
+    .then( (id) => { 
+      wonderfulSalons
+        .where('city', 'like', '%'+city+'%')
+        .fetchAll({ withRelated: ['offers', {
+          'offers': (qb) => { qb.where('prestation_id', id.id); }
+        }]})
+        .then( (models) => {
+          models = models.filter( (e) => {
+            return e.toJSON().offers.length > 0
+          });
+          res.json(models);
+        });
+    });
+});
+
+/** APPOINTMENTS **/
+// Should return an object with lists of appoinments hours as values.
+// The appointment table would have one FK for the hairdresser, one for the customer
+// Use one column for the date and one column for the number of minutes past midnight. 
+
+
+
 
 app.listen(PORT, function() {
     console.log('Server listening on Port %s', PORT);
