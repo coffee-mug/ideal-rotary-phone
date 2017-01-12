@@ -5,11 +5,11 @@
         <img src="http://placehold.it/70x70" alt="">
       </div>
       <div class="card-profile">
-        <strong>Hair de rien</strong>
-        <p class="subtitle">Coiffeur spécialisé en couleurs</p>
-        <p>185, rue Raymond Losserand</p>
-        <p>75014, Paris</p>
-        <button class="btn btn-primary">TEST</button>
+        <strong>{{ hairDresserInfos['company_name'] }}</strong>
+        <p class="subtitle"></p>
+        <p>{{ hairDresserInfos.street }}</p>
+        <p>{{ hairDresserInfos['city'] }}, {{ hairDresserInfos['postal_code'] }}</p>
+        <button class="btn btn-primary">Réserver maintenant !</button>
       </div>
     </div>
     <div class="card-calendar">
@@ -140,6 +140,9 @@ export default {
       endHour: 11
     }
   },
+  props: [
+    'hairDresserInfos',
+  ],
   computed: {
     secondDate() {
       return moment(this.startDate, 'ddd Do MMM').add(1, 'days').format('ddd Do MMM');

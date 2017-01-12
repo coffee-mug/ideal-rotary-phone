@@ -21,6 +21,10 @@ import profile from './components/coiffeur_profile/profile.vue';
 import Card from './components/funnel/Card.vue';
 import HairdressersList from './components/funnel/HairdressersList.vue';
 
+import Home from './components/final/Home.vue';
+import Prestation from './components/final/Prestation.vue';
+import Results from './components/final/Results.vue';
+
 import moment from 'moment'
 
 Vue.use(VueRouter);
@@ -53,6 +57,9 @@ const routes = [
     { path: '/project/profile', component: profile },
     { path: '/project/card', component: Card },
     { path: '/project/list', component: HairdressersList },
+    { path: '/final/home', component: Home },
+    { path: '/final/prestation', component: Prestation, name: "prestation" },
+    { path: '/final/results', component: Results, name: "results" },
       salon
 ]
 

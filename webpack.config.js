@@ -79,6 +79,10 @@ module.exports = {
             target: 'http://localhost:8000',
             secure: false
         },
+        '/api/*': {
+            target: 'http://localhost:8000',
+            secure: false
+        },
     },
   },
   devtool: '#eval-source-map'

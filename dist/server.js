@@ -188,7 +188,7 @@ app.put('/prospection/admin/:id', (req, res) => {
 /*** SALONS ****/
 
 // GET: get all the salons, can filter by name or city.
-app.get('/salons', (req, res) => {
+app.get('/api/salons', (req, res) => {
   var limit,
       name,
       city;
@@ -213,7 +213,7 @@ app.get('/salons', (req, res) => {
 
 
 // Get salons list filtered by haircut + "haircut add-ons";
-app.get('/haircuts/:coupe', (req, res) => {
+app.get('/api/haircuts/:coupe', (req, res) => {
   // Given an haricut, search for the prestation id, then returns from offers list of
   // salons using this prestation id. 
   let prestation_id = '',
