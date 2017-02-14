@@ -17,9 +17,16 @@ export default {
 </script>
 
 <style scoped>
-body {
-  background-color: #04030F;
-  font-family: 'Lato' sans-serif; 
+@font-face {
+    font-family: "MarketDeco";
+    src: url("https://s3.amazonaws.com/tereza-landing/Home/Market_Deco.woff") format('woff');
+}
+
+#app {
+  background: url('https://s3.amazonaws.com/tereza-landing/Home/Arri%C3%A8re_plan.jpg') top center;
+  background-size: cover;
+  height: 420vh;
+  font-family: MarketDeco; 
 }
 h1 {
   font-family: 'Sacramento', cursive;

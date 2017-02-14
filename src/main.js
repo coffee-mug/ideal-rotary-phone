@@ -25,6 +25,7 @@ import Home from './components/final/Home.vue';
 import Prestation from './components/final/Prestation.vue';
 import Results from './components/final/Results.vue';
 import Calendar from './components/final/Calendar.vue';
+import Coiffeur from './components/final/Coiffeur.vue';
 
 import moment from 'moment'
 
@@ -62,6 +63,7 @@ const routes = [
     { path: '/final/prestation', component: Prestation, name: "prestation" },
     { path: '/final/results', component: Results, name: "results" },
     { path: '/final/calendar', component: Calendar, name: "calendar" },
+    { path: '/final/coiffeur', component: Coiffeur, name: "coiffeur" },
       salon
 ]
 

@@ -65,6 +65,8 @@
 import moment from 'moment';
 
 export default {
+  /*** Problème, trouver la solution pour afficher une colonne même si aucun rdv n'a été pris ****/
+
   data() {
     return {
       startDate: '20/01/2017',
@@ -182,7 +184,7 @@ export default {
 
 .slot {
   width: 25vw;
-  background: #333;
+  background: hsl(180,100%,30%);
   color: #fff;
   border: 1px solid #eee;
   text-align: center;
@@ -198,7 +200,6 @@ export default {
   margin: 0 auto;
   text-align: center;
   line-height: 0.9;
-
 }
 
 .slot > div > div {
@@ -210,7 +211,6 @@ export default {
 }
 
 .hourRange {
-  margin-top: 20px;
   text-align: center;
 }
 

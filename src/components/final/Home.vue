@@ -1,54 +1,59 @@
 <template>
 <div>
   <div class="searchContainer">
-    <h1>Tereza</h1>
-    <h2>Simplifiez vous la vie !</h2>
+    <img src="https://s3.amazonaws.com/tereza-landing/Home/TEREZA-TYPO.png" alt="">
+    <h1>Simplifiez vous la vie !</h1>
     <div class="searchbar">
       <form class="form-inline">
         <div class="form-group">
           <input v-model="haircut" class="form-control" placeholder="Recherche coupe">
         </div>
         <div class="form-group">
-          <input v-model="city" class="form-control" placeholder="Où ça ?">
+          <input v-model="city" class="form-control" placeholder="Lieu ?">
         </div>
       </form>
       <button @click.prevent="preSearch"><i class="glyphicon glyphicon-search"></i> </button>
     </div>
   </div>
   <div class="home-categoriesContainer">
-    <h3>Nos catégories</h3>
+    <h3>Nos categories</h3>
     <div class="home-categoriesList">
       <div class="home-categoryCard">
-        <img src="http://placehold.it/140x140" alt="">
+        <img src="https://s3.amazonaws.com/tereza-landing/Home/Categorie-Homme.png" alt="">
         <p>HOMMES</p>
       </div>
       <div class="home-categoryCard">
-        <img src="http://placehold.it/140x140" alt="">
+        <img src="https://s3.amazonaws.com/tereza-landing/Home/Categorie-Femmes.png" alt="">
         <p>FEMMES</p>
       </div>
       <div class="home-categoryCard">
-        <img src="http://placehold.it/140x140" alt="">
+        <img src="https://s3.amazonaws.com/tereza-landing/Home/Categorie-barbier.png" alt="">
         <p>BARBIERS</p>
       </div>
       <div class="home-categoryCard">
-        <img src="http://placehold.it/140x140" alt="">
+        <img src="https://s3.amazonaws.com/tereza-landing/Home/Categorie-Lissage.png" alt="">
         <p>A DOMICILE</p>
       </div>
     </div>
   </div>
-  <hr class="overlay" />
   <div class="home-selectionContainer">
     <h3>LES COIFFEURS DU MOIS</h3>
     <div class="home-selectionList">
       <div class="home-selectionCard">
-        <div class="selectionCard-photo"></div>
+        <div class="selectionCard-photo">
+          <img src="https://s3.amazonaws.com/tereza-landing/Home/Coiffeur-du-mois_1.png" alt="">
+        </div>
         <div class="selectionCard-infos">
           <div class="selectionCard-name">
             <p>HENRI DE TREGES</p>
           </div>
           <div class="selectionCard-coordinates">
             <p class="selectionCard-address">12, rue du chien <br> Paris, 75012</p>
-            <p class="selectionCard-tags">Brushing, Coupe Homme, coupe Femme</p>
+            <ul class="selectionCard-tags">
+              <li>Brushing</li> 
+              <li>Coupe Homme</li> 
+              <li>coupe Femme</li>
+            </ul>
           </div>
           <div class="selectionCard-benefits">
             <div class="selectionCard-benef"></div>
@@ -59,14 +64,20 @@
         </div>
       </div>
       <div class="home-selectionCard">
-        <div class="selectionCard-photo"></div>
+        <div class="selectionCard-photo">
+          <img src="https://s3.amazonaws.com/tereza-landing/Home/Coiffeur-du-mois_2.png" alt="">
+        </div>
         <div class="selectionCard-infos">
           <div class="selectionCard-name">
             <p>HENRI DE TREGES</p>
           </div>
           <div class="selectionCard-coordinates">
             <p class="selectionCard-address">12, rue du chien <br> Paris, 75012</p>
-            <p class="selectionCard-tags">Brushing, Coupe Homme, coupe Femme</p>
+            <ul class="selectionCard-tags">
+              <li>Brushing</li> 
+              <li>Coupe Homme</li> 
+              <li>coupe Femme</li>
+            </ul>
           </div>
           <div class="selectionCard-benefits">
             <div class="selectionCard-benef"></div>
@@ -77,14 +88,20 @@
         </div>
       </div>
       <div class="home-selectionCard">
-        <div class="selectionCard-photo"></div>
+        <div class="selectionCard-photo">
+          <img src="https://s3.amazonaws.com/tereza-landing/Home/Coiffeur-du-mois_3.png" alt="">
+        </div>
         <div class="selectionCard-infos">
           <div class="selectionCard-name">
             <p>HENRI DE TREGES</p>
           </div>
           <div class="selectionCard-coordinates">
             <p class="selectionCard-address">12, rue du chien <br> Paris, 75012</p>
-            <p class="selectionCard-tags">Brushing, Coupe Homme, coupe Femme</p>
+            <ul class="selectionCard-tags">
+              <li>Brushing</li> 
+              <li>Coupe Homme</li> 
+              <li>coupe Femme</li>
+            </ul>
           </div>
           <div class="selectionCard-benefits">
             <div class="selectionCard-benef"></div>
@@ -96,45 +113,43 @@
       </div>
     </div>
   </div>
-  <hr class="overlay big">
   <div class="home-benefitsList">
     <div class="home-benefitItem">
       <div class="benefitIcon">
-        <img src="http://placehold.it/90x90" alt="">
-        <p>Votre coiffeur en deux clics</p>
+        <img src="https://s3.amazonaws.com/tereza-landing/Home/Cllick+bof.png" alt="">
+        <p class="benefits-highlight">Votre coiffeur en deux clics</p>
       </div>
       <p>Une envie de changer de coupe de cheveux, de tailler votre barbe ? </p>
       <p>Terez vous trouve le coiffeur-barbier qui vous convient, selon vos critères.</p>
-      <p>Vérifiez la disponibilité et prenez rendez-vous directement en ligne depuis votre mobile !</p>
+      <p>Verifiez la disponibilite et prenez rendez-vous directement en ligne depuis votre mobile !</p>
     </div>
     <div class="home-benefitItem">
       <div class="benefitIcon">
-        <img src="http://placehold.it/90x90" alt="">
-        <p>Votre coupe préférée</p>
+        <img src="https://s3.amazonaws.com/tereza-landing/Home/hair.png" alt="">
+        <p class="benefits-highlight">Votre coupe preferee</p>
       </div>
-      <p>Tereza vous offre les catalogues exhaustifs de nos partenaires spécialistes.</p>
+      <p>Tereza vous offre les catalogues exhaustifs de nos partenaires specialistes.</p>
       <p>Vous cherchez une coupe en particulier ?</p>
-      <p>Trouvez la sur Tereza, réservez, votre coiffeur vous attend.</p>
+      <p>Trouvez la sur Tereza, reservez, votre coiffeur vous attend.</p>
     </div>
     <div class="home-benefitItem">
       <div class="benefitIcon">
-        <img src="http://placehold.it/90x90" alt="">
-        <p>Meilleur coiffeur, au plus proche !</p>
+        <img src="https://s3.amazonaws.com/tereza-landing/Home/localisation.png" alt="">
+        <p class="benefits-highlight">Meilleur coiffeur, au plus proche !</p>
       </div>
-      <p>Grâce à nos avis vérifiés et aux photos clients, vous n'aurez plus de mauvaises surprises sur la qualité de la prestation.</p>
+      <p>Grâce à nos avis verifies et aux photos clients, vous n'aurez plus de mauvaises surprises sur la qualite de la prestation.</p>
       <p>Vous savez à l'avance à quoi vous attendre, qu'il s'agisse du prix, du rendu et même de l'aspect du salon</p>
       <p>Alors, n'attendez plus !</p>
     </div>
   </div>
-  <hr class="overlay" />
   <div class="home-marketingMessage">
     <h3>COIFFEUR, BARBIERS, REJOIGNEZ-NOUS !</h3>
-    <p>Tereza, c'est un univers mode et beauté dans lequel votre salon et votre savoir-faire sauront être mis en valeur.</p>
+    <p>Tereza, c'est un univers mode et beaute dans lequel votre salon et votre savoir-faire sauront être mis en valeur.</p>
     <p><strong>Notre but ?</strong></p>
-    <p>Vous libérez de la prise de rendez-vous. Notre système de réservation en ligne vous libère du téléphone. Vous pouvez maintenant vous recentrer sur votre activité.</p>
+    <p>Vous liberez de la prise de rendez-vous. Notre système de reservation en ligne vous libère du telephone. Vous pouvez maintenant vous recentrer sur votre activite.</p>
     <p><strong>Envie de connaître votre clientèle ?</strong></p>
-    <p>Le compte utilisateur est fait pour ça ! Vous avez accès aux statistiques que vos clients souhaitent partager pour une qualité de service optimale.</p>
-    <p>N'hésitez plus !</p>
+    <p>Le compte utilisateur est fait pour ça ! Vous avez accès aux statistiques que vos clients souhaitent partager pour une qualite de service optimale.</p>
+    <p>N'hesitez plus !</p>
   </div>
 </div>
 </template>
@@ -170,13 +185,29 @@ export default {
   align-items: center;
   flex-direction: column;
   width: 100vw;
-  height: 40vh;
-  background: #626;
+  height: 80vh;
 }
 
-.searchContainer h1, .searchContainer h2 {
+.searchContainer h1, h3 {
   text-align: center;
   color: #fff;
+  margin-top: 0;
+}
+ 
+.searchContainer h1 {
+ font-size: 4.5em; 
+}
+
+h3 {
+  font-size: 3.5em;
+  margin: 5vh auto 5vh auto;
+  
+}
+
+.searchContainer img {
+  min-width: 300px;
+  width: 300px;
+  margin-top: 10vh;
 }
 
 .searchbar {
@@ -195,6 +226,7 @@ export default {
 .searchbar form div input {
   background: #444;
   margin-left: 15px;
+  color: #fff;
 }
 
 .searchbar button {
@@ -218,24 +250,28 @@ export default {
 .home-categoriesList {
   display: flex;
   align-tiems: center;
+  margin: 0 auto 25vh auto;
 } 
 
 .home-categoryCard {
   margin-right: 5vw;
 }
 
+.home-categoryCard img {
+  width: 200px;
+  border-radius: 15px;
+}
+
 .home-categoryCard p {
   text-align: center;
+  color: #fff;
+  font-size: 1.9em;
+  margin-top: 5vh;
 
 }
 
-hr.overlay {
-  height: 3vh;
-  background: hsla(0, 0%, 40%, 0.5);
-}
-
-hr.overlay.big {
-  height: 8vh;
+.home-selectionContainer {
+  margin-bottom: 35vh;
 }
 
 .home-selectionContainer h3 {
@@ -306,7 +342,10 @@ hr.overlay.big {
 .selectionCard-photo {
   width: 250px;
   height: 370px;
-  background: pink;
+}
+
+.selectionCard-photo img {
+  height: 100%;
 }
 
 .home-benefitsList {
@@ -331,10 +370,18 @@ hr.overlay.big {
 .home-benefitItem p {
   text-align: center;
   margin: 10px auto;
+  color: #fff;
 }
 
-.home-benefitItem img {
+.home-benefitItem .benefits-highlight {
+  color: cyan;
+  font-size: 2em;
+}
+
+.home-benefitItem .benefitIcon img {
   display: block;
+  height: 150px;
+  -webkit-filter: hue-rotate(80deg);
   margin: 25px auto;
   border-radius: 5px;
   box-shadow: 0 3px 10px rgba(0,0,0,0.4);
@@ -347,14 +394,31 @@ hr.overlay.big {
   justify-content: center;
   height: 40vh;
   width: 100vw;
-  margin: 0 auto;
+  margin: 65vh auto 0 auto;
 }
 
 .home-marketingMessage p {
   width: 25vw;
   text-align: center;
   margin: 15px auto;
+  color: #fff;
+  font-size: 1.2em;
 }
+
+.selectionCard-tags {
+  list-style-type: none;
+}
+
+.selectionCard-tags li {
+  display: inline-block;
+  margin-left: 5px;
+  margin-bottom: 3px;
+  border: 1px solid #fff;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 0.8em;
+}
+
 
 
 </style>
