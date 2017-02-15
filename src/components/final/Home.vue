@@ -1,155 +1,160 @@
 <template>
 <div>
+  <h1 class="text-center" style="font-size: 4.5em">Simplifiez vous la vie !</h1>
   <div class="searchContainer">
-    <img src="https://s3.amazonaws.com/tereza-landing/Home/TEREZA-TYPO.png" alt="">
-    <h1>Simplifiez vous la vie !</h1>
     <div class="searchbar">
       <form class="form-inline">
-        <div class="form-group">
+        <div class="form-group form-inline">
           <input v-model="haircut" class="form-control" placeholder="Recherche coupe">
         </div>
-        <div class="form-group">
+        <div class="form-group form-inline">
           <input v-model="city" class="form-control" placeholder="Lieu ?">
+        </div>
+        <div class="form-group form-inline">
+          <input v-model="coiffeur" class="form-control" placeholder="Deja un coiffeur ?">
         </div>
       </form>
       <button @click.prevent="preSearch"><i class="glyphicon glyphicon-search"></i> </button>
     </div>
   </div>
-  <div class="home-categoriesContainer">
-    <h3>Nos categories</h3>
-    <div class="home-categoriesList">
-      <div class="home-categoryCard">
-        <img src="https://s3.amazonaws.com/tereza-landing/Home/Categorie-Homme.png" alt="">
-        <p>HOMMES</p>
-      </div>
-      <div class="home-categoryCard">
-        <img src="https://s3.amazonaws.com/tereza-landing/Home/Categorie-Femmes.png" alt="">
-        <p>FEMMES</p>
-      </div>
-      <div class="home-categoryCard">
-        <img src="https://s3.amazonaws.com/tereza-landing/Home/Categorie-barbier.png" alt="">
-        <p>BARBIERS</p>
-      </div>
-      <div class="home-categoryCard">
-        <img src="https://s3.amazonaws.com/tereza-landing/Home/Categorie-Lissage.png" alt="">
-        <p>A DOMICILE</p>
-      </div>
-    </div>
-  </div>
-  <div class="home-selectionContainer">
-    <h3>LES COIFFEURS DU MOIS</h3>
-    <div class="home-selectionList">
-      <div class="home-selectionCard">
-        <div class="selectionCard-photo">
-          <img src="https://s3.amazonaws.com/tereza-landing/Home/Coiffeur-du-mois_1.png" alt="">
+  <div class="background-patch">
+
+    <div class="home-categoriesContainer">
+      <h3>Nos categories</h3>
+      <div class="home-categoriesList">
+        <div class="home-categoryCard">
+          <img src="https://s3.amazonaws.com/tereza-landing/Home/Categorie-Homme.png" alt="">
+          <p>HOMMES</p>
         </div>
-        <div class="selectionCard-infos">
-          <div class="selectionCard-name">
-            <p>HENRI DE TREGES</p>
-          </div>
-          <div class="selectionCard-coordinates">
-            <p class="selectionCard-address">12, rue du chien <br> Paris, 75012</p>
-            <ul class="selectionCard-tags">
-              <li>Brushing</li> 
-              <li>Coupe Homme</li> 
-              <li>coupe Femme</li>
-            </ul>
-          </div>
-          <div class="selectionCard-benefits">
-            <div class="selectionCard-benef"></div>
-            <div class="selectionCard-benef"></div>
-            <div class="selectionCard-benef"></div>
-          </div>
-          <button>PRENDRE RENDEZ-VOUS</button>
+        <div class="home-categoryCard">
+          <img src="https://s3.amazonaws.com/tereza-landing/Home/Categorie-Femmes.png" alt="">
+          <p>FEMMES</p>
         </div>
-      </div>
-      <div class="home-selectionCard">
-        <div class="selectionCard-photo">
-          <img src="https://s3.amazonaws.com/tereza-landing/Home/Coiffeur-du-mois_2.png" alt="">
+        <div class="home-categoryCard">
+          <img src="https://s3.amazonaws.com/tereza-landing/Home/Categorie-barbier.png" alt="">
+          <p>BARBIERS</p>
         </div>
-        <div class="selectionCard-infos">
-          <div class="selectionCard-name">
-            <p>HENRI DE TREGES</p>
-          </div>
-          <div class="selectionCard-coordinates">
-            <p class="selectionCard-address">12, rue du chien <br> Paris, 75012</p>
-            <ul class="selectionCard-tags">
-              <li>Brushing</li> 
-              <li>Coupe Homme</li> 
-              <li>coupe Femme</li>
-            </ul>
-          </div>
-          <div class="selectionCard-benefits">
-            <div class="selectionCard-benef"></div>
-            <div class="selectionCard-benef"></div>
-            <div class="selectionCard-benef"></div>
-          </div>
-          <button>PRENDRE RENDEZ-VOUS</button>
-        </div>
-      </div>
-      <div class="home-selectionCard">
-        <div class="selectionCard-photo">
-          <img src="https://s3.amazonaws.com/tereza-landing/Home/Coiffeur-du-mois_3.png" alt="">
-        </div>
-        <div class="selectionCard-infos">
-          <div class="selectionCard-name">
-            <p>HENRI DE TREGES</p>
-          </div>
-          <div class="selectionCard-coordinates">
-            <p class="selectionCard-address">12, rue du chien <br> Paris, 75012</p>
-            <ul class="selectionCard-tags">
-              <li>Brushing</li> 
-              <li>Coupe Homme</li> 
-              <li>coupe Femme</li>
-            </ul>
-          </div>
-          <div class="selectionCard-benefits">
-            <div class="selectionCard-benef"></div>
-            <div class="selectionCard-benef"></div>
-            <div class="selectionCard-benef"></div>
-          </div>
-          <button>PRENDRE RENDEZ-VOUS</button>
+        <div class="home-categoryCard">
+          <img src="https://s3.amazonaws.com/tereza-landing/Home/Categorie-Lissage.png" alt="">
+          <p>A DOMICILE</p>
         </div>
       </div>
     </div>
-  </div>
-  <div class="home-benefitsList">
-    <div class="home-benefitItem">
-      <div class="benefitIcon">
-        <img src="https://s3.amazonaws.com/tereza-landing/Home/Cllick+bof.png" alt="">
-        <p class="benefits-highlight">Votre coiffeur en deux clics</p>
+    <div class="home-selectionContainer">
+      <h3>LES COIFFEURS DU MOIS</h3>
+      <div class="home-selectionList">
+        <div class="home-selectionCard">
+          <div class="selectionCard-photo">
+            <img src="https://s3.amazonaws.com/tereza-landing/Home/Coiffeur-du-mois_1.png" alt="">
+          </div>
+          <div class="selectionCard-infos">
+            <div class="selectionCard-name">
+              <p>HENRI DE TREGES</p>
+            </div>
+            <div class="selectionCard-coordinates">
+              <p class="selectionCard-address">12, rue du chien <br> Paris, 75012</p>
+              <ul class="selectionCard-tags">
+                <li>Brushing</li> 
+                <li>Coupe Homme</li> 
+                <li>coupe Femme</li>
+              </ul>
+            </div>
+            <div class="selectionCard-benefits">
+              <div class="selectionCard-benef"></div>
+              <div class="selectionCard-benef"></div>
+              <div class="selectionCard-benef"></div>
+            </div>
+            <button>PRENDRE RENDEZ-VOUS</button>
+          </div>
+        </div>
+        <div class="home-selectionCard">
+          <div class="selectionCard-photo">
+            <img src="https://s3.amazonaws.com/tereza-landing/Home/Coiffeur-du-mois_2.png" alt="">
+          </div>
+          <div class="selectionCard-infos">
+            <div class="selectionCard-name">
+              <p>HENRI DE TREGES</p>
+            </div>
+            <div class="selectionCard-coordinates">
+              <p class="selectionCard-address">12, rue du chien <br> Paris, 75012</p>
+              <ul class="selectionCard-tags">
+                <li>Brushing</li> 
+                <li>Coupe Homme</li> 
+                <li>coupe Femme</li>
+              </ul>
+            </div>
+            <div class="selectionCard-benefits">
+              <div class="selectionCard-benef"></div>
+              <div class="selectionCard-benef"></div>
+              <div class="selectionCard-benef"></div>
+            </div>
+            <button>PRENDRE RENDEZ-VOUS</button>
+          </div>
+        </div>
+        <div class="home-selectionCard">
+          <div class="selectionCard-photo">
+            <img src="https://s3.amazonaws.com/tereza-landing/Home/Coiffeur-du-mois_3.png" alt="">
+          </div>
+          <div class="selectionCard-infos">
+            <div class="selectionCard-name">
+              <p>HENRI DE TREGES</p>
+            </div>
+            <div class="selectionCard-coordinates">
+              <p class="selectionCard-address">12, rue du chien <br> Paris, 75012</p>
+              <ul class="selectionCard-tags">
+                <li>Brushing</li> 
+                <li>Coupe Homme</li> 
+                <li>coupe Femme</li>
+              </ul>
+            </div>
+            <div class="selectionCard-benefits">
+              <div class="selectionCard-benef"></div>
+              <div class="selectionCard-benef"></div>
+              <div class="selectionCard-benef"></div>
+            </div>
+            <button>PRENDRE RENDEZ-VOUS</button>
+          </div>
+        </div>
       </div>
-      <p>Une envie de changer de coupe de cheveux, de tailler votre barbe ? </p>
-      <p>Terez vous trouve le coiffeur-barbier qui vous convient, selon vos critères.</p>
-      <p>Verifiez la disponibilite et prenez rendez-vous directement en ligne depuis votre mobile !</p>
     </div>
-    <div class="home-benefitItem">
-      <div class="benefitIcon">
-        <img src="https://s3.amazonaws.com/tereza-landing/Home/hair.png" alt="">
-        <p class="benefits-highlight">Votre coupe preferee</p>
+    <div class="home-benefitsList">
+      <div class="home-benefitItem">
+        <div class="benefitIcon">
+          <img src="https://s3.amazonaws.com/tereza-landing/Home/Cllick+bof.png" alt="">
+          <p class="benefits-highlight">Votre coiffeur en deux clics</p>
+        </div>
+        <p>Une envie de changer de coupe de cheveux, de tailler votre barbe ? </p>
+        <p>Tereza vous trouve le coiffeur-barbier qui vous convient, selon vos criteres.</p>
+        <p>Verifiez la disponibilite et prenez rendez-vous directement en ligne depuis votre mobile !</p>
       </div>
-      <p>Tereza vous offre les catalogues exhaustifs de nos partenaires specialistes.</p>
-      <p>Vous cherchez une coupe en particulier ?</p>
-      <p>Trouvez la sur Tereza, reservez, votre coiffeur vous attend.</p>
-    </div>
-    <div class="home-benefitItem">
-      <div class="benefitIcon">
-        <img src="https://s3.amazonaws.com/tereza-landing/Home/localisation.png" alt="">
-        <p class="benefits-highlight">Meilleur coiffeur, au plus proche !</p>
+      <div class="home-benefitItem">
+        <div class="benefitIcon">
+          <img src="https://s3.amazonaws.com/tereza-landing/Home/hair.png" alt="">
+          <p class="benefits-highlight">Votre coupe preferee</p>
+        </div>
+        <p>Tereza vous offre les catalogues exhaustifs de nos partenaires specialistes.</p>
+        <p>Vous cherchez une coupe en particulier ?</p>
+        <p>Trouvez la sur Tereza, reservez, votre coiffeur vous attend.</p>
       </div>
-      <p>Grâce à nos avis verifies et aux photos clients, vous n'aurez plus de mauvaises surprises sur la qualite de la prestation.</p>
-      <p>Vous savez à l'avance à quoi vous attendre, qu'il s'agisse du prix, du rendu et même de l'aspect du salon</p>
-      <p>Alors, n'attendez plus !</p>
+      <div class="home-benefitItem">
+        <div class="benefitIcon">
+          <img src="https://s3.amazonaws.com/tereza-landing/Home/localisation.png" alt="">
+          <p class="benefits-highlight">Meilleur coiffeur, au plus proche !</p>
+        </div>
+        <p>Grâce a nos avis verifies et aux photos clients, vous n'aurez plus de mauvaises surprises sur la qualite de la prestation.</p>
+        <p>Vous savez a l'avance à quoi vous attendre, qu'il s'agisse du prix, du rendu et même de l'aspect du salon</p>
+        <p>Alors, n'attendez plus !</p>
+      </div>
     </div>
-  </div>
-  <div class="home-marketingMessage">
-    <h3>COIFFEUR, BARBIERS, REJOIGNEZ-NOUS !</h3>
-    <p>Tereza, c'est un univers mode et beaute dans lequel votre salon et votre savoir-faire sauront être mis en valeur.</p>
-    <p><strong>Notre but ?</strong></p>
-    <p>Vous liberez de la prise de rendez-vous. Notre système de reservation en ligne vous libère du telephone. Vous pouvez maintenant vous recentrer sur votre activite.</p>
-    <p><strong>Envie de connaître votre clientèle ?</strong></p>
-    <p>Le compte utilisateur est fait pour ça ! Vous avez accès aux statistiques que vos clients souhaitent partager pour une qualite de service optimale.</p>
-    <p>N'hesitez plus !</p>
+    <div class="home-marketingMessage">
+      <h3>COIFFEUR, BARBIERS, REJOIGNEZ-NOUS !</h3>
+      <p>Tereza, c'est un univers mode et beaute dans lequel votre salon et votre savoir-faire sauront être mis en valeur.</p>
+      <p><strong>Notre but ?</strong></p>
+      <p>Vous liberez de la prise de rendez-vous. Notre système de reservation en ligne vous libère du telephone. Vous pouvez maintenant vous recentrer sur votre activite.</p>
+      <p><strong>Envie de connaître votre clientèle ?</strong></p>
+      <p>Le compte utilisateur est fait pour ça ! Vous avez accès aux statistiques que vos clients souhaitent partager pour une qualite de service optimale.</p>
+      <p>N'hesitez plus !</p>
+    </div>
   </div>
 </div>
 </template>
@@ -185,7 +190,7 @@ export default {
   align-items: center;
   flex-direction: column;
   width: 100vw;
-  height: 80vh;
+  height: 40vh;
 }
 
 .searchContainer h1, h3 {
@@ -215,7 +220,7 @@ h3 {
   align-items: center;
   justify-content: flex-start;
   background: #000;
-  width: 500px;
+  width: 650px;
   height: 70px;
   padding: 15px 0 15px 0;
   margin: 0 auto;
@@ -417,6 +422,12 @@ h3 {
   padding: 5px;
   border-radius: 5px;
   font-size: 0.8em;
+}
+
+.background-patch {
+  background: url('https://s3.amazonaws.com/tereza-landing/Home/Arri%C3%A8re_plan.jpg') no-repeat;
+  background-position-y: 80%;
+  background-size: cover;
 }
 
 

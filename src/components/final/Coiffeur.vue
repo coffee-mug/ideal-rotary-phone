@@ -2,23 +2,26 @@
 <div class="coiffeur">
   <div class="coiffeur-header">
     <div class="coiffeur-avatar">
-      <img src="http://placehold.it/400x400" />
+      <img :src="photo_link" />
       <ul class="coiffeur-socialList">
-        <li>F</li>
-        <li>I</li>
-        <li>T</li>
-        <li>M</li>
+        <li><img src="https://s3.amazonaws.com/tereza-landing/Home/FB-White.png" alt=""></li>
+        <li><img src="https://s3.amazonaws.com/tereza-landing/Home/Instagram-White.png" alt=""></li>
+        <li><img src="https://s3.amazonaws.com/tereza-landing/Home/Pinterest-logo.png" alt=""></li>
+        <li><img src="https://s3.amazonaws.com/tereza-landing/Home/Twitter-White.png" alt=""></li>
       </ul>
     </div>
     <div class="coiffeur-headerPicture"></div>
-    <div class="coiffeur-headerMap"></div>
+    <div class="coiffeur-headerMap">
+      {{ geocode }}
+      <gmap-map :center="geocode" :zoom="12"></gmap-map>
+    </div>
   </div>
   <div class="coiffeur-description">
     <div class="coiffeur-coordinates">
-      <p>Henri de treges</p>
-      <p>ETOILES A METTRE</p>
-      <p>15, rue de la Convention</p>
-      <p>75015, PARIS</p>
+      <p>{{name}}</p>
+      <p></p>
+      <p>{{ street }}</p>
+      <p>{{cp}}, {{city}}</p>
     </div>
     <div class="coiffeur-descriptionContent">
       <p>
@@ -56,6 +59,16 @@
 
 <script>
 export default {
+  data() {
+    return {
+      photo_link: window.localStorage.getItem('photo_link'),
+      name: window.localStorage.getItem('name'),
+      city: window.localStorage.getItem('city'),
+      street: window.localStorage.getItem('street'),
+      cp: window.localStorage.getItem('cp'),
+      geocode: { lat: parseFloat(window.localStorage.getItem('lat'),10), lng: parseFloat(window.localStorage.getItem('lng'), 10) }
+    }
+  }
   
 }
 </script>
@@ -98,14 +111,15 @@ export default {
   width: 65px;
   height: 98%;
   z-index: 1;
+  padding: 0 35px;
 }
 
 .coiffeur-avatar ul li {
   display: block;
   margin-bottom: 5px;
   color: #fff;
-  border: 1px solid #fff;
   margin-top: 20px;
+  width: 25px;
 }
 
 
@@ -115,7 +129,7 @@ export default {
   justify-content: space-between;
   width: 60vw;
   height: 30vh;
-  background: #fff;
+  background: url('https://s3.amazonaws.com/tereza-landing/Home/cover-henri.png') center center;
   margin: 0 auto;
   border-radius: 15px;
 }

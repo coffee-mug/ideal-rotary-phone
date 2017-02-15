@@ -1,9 +1,57 @@
 <template>
-<div>
-  <Card v-for="o in results" :o="o" :hairDresserInfos="o">
-  </Card>
+<div class="results-container">
+  <h1> Resultats</h1>
+  <div class="results">
+    <div class="results-cards">
+      <Card v-for="o in hairdressers"
+        :o="o" 
+        :name="o.name"
+        :cp="o.cp"
+        :street="o.street"
+        :city="o.city"
+        :geocode="o.geoloc"
+        :photo_link="o.photo_link">
+      </Card>
+    </div>
+    <gmap-map
+      :center="{lat: 48.862840, lng: 2.333474 }"
+      :zoom="9"
+      class="results-map">
+      <gmap-marker v-for="h in hairdressers" 
+                   :position="h.geoloc"></gmap-marker>
+    </gmap-map>
+  </div>
 </div>
 </template>
+
+<style>
+.results-container {
+  background: url('https://s3.amazonaws.com/tereza-landing/Home/Arri%C3%A8re_plan.jpg') no-repeat 15% center;
+  background-size: cover;
+  margin-top: 10vh;
+  padding: 15px;
+}
+
+h1 {
+  color: #fff;
+  text-align: center;
+}
+.results {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 80vw;
+  margin: 0 auto;
+}
+
+.results-map {
+  width: 50%;
+  height: 95vh;
+  border-radius: 15px;
+  margin-left: 15px;
+}
+
+</style>
 
 
 <script>
@@ -11,7 +59,33 @@ import Card from '../funnel/Card.vue';
 export default {
   data() {
     return {
-      results: []
+      results: [],
+      hairdressers: [
+        {
+          name: "Henri de treges",
+          cp: "75015",
+          city: "Paris",
+          street: "15, rue de la convention",
+          photo_link: "https://s3.amazonaws.com/tereza-landing/Home/Coiffeur-du-mois_1.png",
+          geoloc: { lat: 48.845433, lng: 2.279132 }
+        },
+        {
+          name: "Nathalie Feuillade",
+          cp: "75014",
+          city: "Paris",
+          street: "14, rue henri bocquillon",
+          photo_link: "https://s3.amazonaws.com/tereza-landing/Home/Coiffeur-du-mois_2.png",
+          geoloc: { lat: 48.841485, lng: 2.289596 }
+        },
+        {
+          name: "Simone Duchamp",
+          cp: "75004",
+          city: "Paris",
+          street: "12, rue du temple",
+          photo_link: "https://s3.amazonaws.com/tereza-landing/Home/Coiffeur-du-mois_3.png",
+          geoloc: { lat: 48.858286, lng: 2.353283}
+        },
+      ]
 
     }  
   },

@@ -1,8 +1,9 @@
 'use strict';
 
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import VueResource from 'vue-resource'
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import VueResource from 'vue-resource';
+import * as VueGoogleMaps from 'vue2-google-maps';
 
 // Components
 import App from './components/App.vue';
@@ -31,6 +32,11 @@ import moment from 'moment'
 
 Vue.use(VueRouter);
 Vue.use(VueResource);
+Vue.use(VueGoogleMaps, {
+  load: {
+    key:'AIzaSyBHeHzMkU8N0UlxJfH4UT9_C_cS2KSxCIw'
+  }
+});
 
 // Forms data
 Vue.http.options.emulateJSON = true

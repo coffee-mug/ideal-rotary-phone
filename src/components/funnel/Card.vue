@@ -1,123 +1,116 @@
 <template>
+<div>
   <div class="card">
-    <div class="card-infos">
-      <div class="card-avatar">
-        <img src="http://placehold.it/70x70" alt="">
+      <div class="card-photo">
+        <img :src="photo_link"  alt="">
       </div>
-      <div class="card-profile">
-        <strong>{{ hairDresserInfos['company_name'] }}</strong>
-        <p class="subtitle"></p>
-        <p>{{ hairDresserInfos.street }}</p>
-        <p>{{ hairDresserInfos['city'] }}, {{ hairDresserInfos['postal_code'] }}</p>
-        <button class="btn btn-primary">Réserver maintenant !</button>
-      </div>
-    </div>
-    <div class="card-calendar">
-      <div class="calendar-header">
-          <div class="changeDateRange" @click="updateRootDate('decrement')">&lt;</div>
-          <div class="calendar-col-header">{{ this.startDate }}</div>
-          <div class="calendar-col-header">{{ this.secondDate }}</div>
-          <div class="calendar-col-header">{{ this.thirdDate }}</div>
-          <div class="changeDateRange" @click="updateRootDate('increment')">&gt;</div>
-      </div>
-      <div class="calendar-cols">
-        <div class="calendar-col-1">
-          <div v-for="spot in parseAppointments(startDate.toString())" :class="{ 'calendar-slot-free': spot.isFree }">
-            <p v-if="spot.isFree" class="text-center"> {{ spot.spot }} </p>
-            <p v-else="!spot.isFree" class="text-center"> - </p>
-          </div>
+      <div class="card-infos">
+        <div class="card-name">
+          <p>{{ name }}</p>
         </div>
-        <div class="calendar-col-2">
-          <div v-for="spot in parseAppointments(secondDate.toString())" :class="{ 'calendar-slot-free': spot.isFree }">
-            <p v-if="spot.isFree" class="text-center"> {{ spot.spot }} </p>
-            <p v-else="!spot.isFree" class="text-center"> - </p>
-          </div>
+        <div class="card-rating">
+          <ul>
+            <li><img src="https://s3.amazonaws.com/tereza-landing/Home/Rate.png" alt=""></li>
+            <li><img src="https://s3.amazonaws.com/tereza-landing/Home/Rate.png" alt=""></li>
+            <li><img src="https://s3.amazonaws.com/tereza-landing/Home/Rate.png" alt=""></li>
+            <li><img src="https://s3.amazonaws.com/tereza-landing/Home/Rate.png" alt=""></li>
+            <li><img src="https://s3.amazonaws.com/tereza-landing/Home/Rate.png" alt=""></li>
+          </ul>
         </div>
-        <div class="calendar-col-3">
-          <div v-for="spot in parseAppointments(thirdDate.toString())" :class="{ 'calendar-slot-free': spot.isFree }">
-            <p v-if="spot.isFree" class="text-center"> {{ spot.spot }} </p>
-            <p v-else="!spot.isFree" class="text-center"> - </p>
-          </div>
+        <div class="card-coordinates">
+          <p class="card-address">{{ street }} <br> {{ city }}, {{ cp }}</p>
+          <ul class="card-tags">
+            <li>Brushing</li> 
+            <li>Coupe Homme</li> 
+            <li>coupe Femme</li>
+          </ul>
         </div>
+        <div class="card-benefits">
+          <div class="card-benef"></div>
+          <div class="card-benef"></div>
+          <div class="card-benef"></div>
+        </div>
+        <p class="card-cta" @click="saveInfoAndGo">PRENDRE RENDEZ-VOUS</p>
       </div>
     </div>
   </div>
+</div>
 </template>
 
 <style scoped>
-
 .card {
   display: flex;
+  flex-orientation: column;
   align-items: flex-start;
-  justify-content: space-around;
+  justify-content: space-between;
+  width: 650px;
+  margin: 0 auto 5px auto;
+  height: 300px;
+  background: rgba(255,255,255,0.3);
   padding: 15px;
+  border-radius: 5px;
 }
 
-.card:hover {
-  border: 1px solid lightblue;
-  border-radius: 5px;
+.card-photo {
+  width: 40%;
+  height: 95%;
+  overflow: hidden;
+  border-radius: 25px;
+}
+
+.card-photo img {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  padding: 15px;
+  margin-top: -5%;
 }
 
 .card-infos {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  width: 400px;
+  width: 60%;
+  padding: 15px;
+  background: black;
+  color: #fff;
+  height: 95%;
+  border-radius: 15px;
 }
 
-.card-profile strong {
-  color: #2980b9;
+.card-name p {
+  font-size: 1.8em;
 }
 
-.card-profile .subtitle {
-  color: #006;
+.card-cta {
+  font-size: 1.7em;
+  text-align: center;
 }
 
-.card-infos > .card-avatar {
-  align-self: flex-start;
+ul.card-tags {
+  width: 100%; 
 }
 
-.card-infos > .card-avatar img {
-  border-radius: 35px;
-  max-width: 70px;
-  max-height: 70px;
+.card-tags, .card-rating ul {
+  padding: 0;
 }
 
-.card-calendar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-grow: 2;
-  flex-direction: column;
-  width: 500px;
+.card-rating ul li {
+  display: inline;
 }
 
-.calendar-header, .calendar-cols {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  width: 100%;
+.card-rating ul li img {
+  width: 20px;
+  background: #fff;
 }
 
-.calendar-slot-free {
-  background: #2980b9;
-  color: #eee;
-  font-weight: bold;
-  border-radius: 5px;
-  width: 80px;
-  height: 25px;
-  margin: 5px 0;
+.card-tags {
+  margin-bottom: 25px;
 }
 
-.changeDateRange {
-  font-weight: bold;
-  color: lightblue;
+.card-tags li {
+  display: inline;
+  border: 1px solid cyan;
+  border-radius: 3px;
+  padding: 3px;
 }
-
-.changeDateRange:hover {
-  cursor: pointer;
-}
-
 </style>
 
 
@@ -141,7 +134,12 @@ export default {
     }
   },
   props: [
-    'hairDresserInfos',
+    'photo_link',
+    'cp',
+    'street',
+    'city',
+    'name',
+    'geocode'
   ],
   computed: {
     secondDate() {
@@ -152,6 +150,19 @@ export default {
     }
   },
   methods: {
+    saveInfoAndGo() {
+      var data = ['photo_link', 'cp', 'street', 'city', 'name'];
+      var geo = { lat: this["geocode"]["lat"], lng: this["geocode"]["lng"] };
+
+      window.localStorage.setItem("lat", geo['lat']);
+      window.localStorage.setItem("lng", geo['lng']);
+
+      data.forEach( (e) => {
+          window.localStorage.setItem(e, this[e]);
+        });
+
+      this.$router.push('coiffeur');
+    },
     currentDate(offset) {
       var offset = offset || 0,
           dateCopy = Object.assign(this.start, {});
