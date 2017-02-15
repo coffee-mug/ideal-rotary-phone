@@ -19,7 +19,7 @@
   </div>
   <div class="background-patch">
 
-    <div class="home-categoriesContainer">
+    <section class="home-categoriesContainer">
       <h3>Nos categories</h3>
       <div class="home-categoriesList">
         <div class="home-categoryCard">
@@ -39,88 +39,52 @@
           <p>A DOMICILE</p>
         </div>
       </div>
-    </div>
-    <div class="home-selectionContainer">
+    </section>
+    <section class="home-selectionContainer">
       <h3>LES COIFFEURS DU MOIS</h3>
       <div class="home-selectionList">
-        <div class="home-selectionCard">
-          <div class="selectionCard-photo">
-            <img src="https://s3.amazonaws.com/tereza-landing/Home/Coiffeur-du-mois_1.png" alt="">
+        <template v-for="c in hairdressers">
+          <div class="home-selectionCard">
+            <div class="selectionCard-photo">
+              <img :src="c.photo_link" alt="">
+            </div>
+            <div class="selectionCard-infos">
+              <div class="selectionCard-name">
+                <p>{{ c.name }}</p>
+              </div>
+              <div class="selectionCard-coordinates">
+                <p class="selectionCard-address">{{ c.street }} <br> {{ c.city }}, {{ c.cp }}</p>
+                <ul class="selectionCard-tags">
+                  <li>Brushing</li> 
+                  <li>Coupe Homme</li> 
+                  <li>coupe Femme</li>
+                </ul>
+              </div>
+              <div class="selectionCard-benefits">
+                <div class="selectionCard-benef">
+                  <img src="https://s3.amazonaws.com/tereza-landing/Home/Scissor2.png" alt="">
+                  <span class="text-center">3 coiffeurs disponibles</span>
+                </div>
+                <div class="selectionCard-benef">
+                  <img src="https://s3.amazonaws.com/tereza-landing/Home/Pouce2.png" alt="">
+                  <span class="text-center">Excellents avis</span>
+                </div>
+                <div class="selectionCard-benef">
+                  <img src="https://s3.amazonaws.com/tereza-landing/Home/Pouce2.png" alt="">
+                  <p class="text-center">Coiffeur certifie</p>
+                </div>
+              </div>
+              <button>PRENDRE RENDEZ-VOUS</button>
+            </div>
           </div>
-          <div class="selectionCard-infos">
-            <div class="selectionCard-name">
-              <p>HENRI DE TREGES</p>
-            </div>
-            <div class="selectionCard-coordinates">
-              <p class="selectionCard-address">12, rue du chien <br> Paris, 75012</p>
-              <ul class="selectionCard-tags">
-                <li>Brushing</li> 
-                <li>Coupe Homme</li> 
-                <li>coupe Femme</li>
-              </ul>
-            </div>
-            <div class="selectionCard-benefits">
-              <div class="selectionCard-benef"></div>
-              <div class="selectionCard-benef"></div>
-              <div class="selectionCard-benef"></div>
-            </div>
-            <button>PRENDRE RENDEZ-VOUS</button>
-          </div>
-        </div>
-        <div class="home-selectionCard">
-          <div class="selectionCard-photo">
-            <img src="https://s3.amazonaws.com/tereza-landing/Home/Coiffeur-du-mois_2.png" alt="">
-          </div>
-          <div class="selectionCard-infos">
-            <div class="selectionCard-name">
-              <p>HENRI DE TREGES</p>
-            </div>
-            <div class="selectionCard-coordinates">
-              <p class="selectionCard-address">12, rue du chien <br> Paris, 75012</p>
-              <ul class="selectionCard-tags">
-                <li>Brushing</li> 
-                <li>Coupe Homme</li> 
-                <li>coupe Femme</li>
-              </ul>
-            </div>
-            <div class="selectionCard-benefits">
-              <div class="selectionCard-benef"></div>
-              <div class="selectionCard-benef"></div>
-              <div class="selectionCard-benef"></div>
-            </div>
-            <button>PRENDRE RENDEZ-VOUS</button>
-          </div>
-        </div>
-        <div class="home-selectionCard">
-          <div class="selectionCard-photo">
-            <img src="https://s3.amazonaws.com/tereza-landing/Home/Coiffeur-du-mois_3.png" alt="">
-          </div>
-          <div class="selectionCard-infos">
-            <div class="selectionCard-name">
-              <p>HENRI DE TREGES</p>
-            </div>
-            <div class="selectionCard-coordinates">
-              <p class="selectionCard-address">12, rue du chien <br> Paris, 75012</p>
-              <ul class="selectionCard-tags">
-                <li>Brushing</li> 
-                <li>Coupe Homme</li> 
-                <li>coupe Femme</li>
-              </ul>
-            </div>
-            <div class="selectionCard-benefits">
-              <div class="selectionCard-benef"></div>
-              <div class="selectionCard-benef"></div>
-              <div class="selectionCard-benef"></div>
-            </div>
-            <button>PRENDRE RENDEZ-VOUS</button>
-          </div>
+        </template>
         </div>
       </div>
-    </div>
-    <div class="home-benefitsList">
+    </section>
+    <section class="home-benefitsList">
       <div class="home-benefitItem">
         <div class="benefitIcon">
-          <img src="https://s3.amazonaws.com/tereza-landing/Home/Cllick+bof.png" alt="">
+          <img src="https://s3.amazonaws.com/tereza-landing/Home/CllickBof2.png" alt="">
           <p class="benefits-highlight">Votre coiffeur en deux clics</p>
         </div>
         <p>Une envie de changer de coupe de cheveux, de tailler votre barbe ? </p>
@@ -129,7 +93,7 @@
       </div>
       <div class="home-benefitItem">
         <div class="benefitIcon">
-          <img src="https://s3.amazonaws.com/tereza-landing/Home/hair.png" alt="">
+          <img src="https://s3.amazonaws.com/tereza-landing/Home/Hair2.png" alt="">
           <p class="benefits-highlight">Votre coupe preferee</p>
         </div>
         <p>Tereza vous offre les catalogues exhaustifs de nos partenaires specialistes.</p>
@@ -138,15 +102,15 @@
       </div>
       <div class="home-benefitItem">
         <div class="benefitIcon">
-          <img src="https://s3.amazonaws.com/tereza-landing/Home/localisation.png" alt="">
+          <img src="https://s3.amazonaws.com/tereza-landing/Home/localisation2.png" alt="">
           <p class="benefits-highlight">Meilleur coiffeur, au plus proche !</p>
         </div>
         <p>Grâce a nos avis verifies et aux photos clients, vous n'aurez plus de mauvaises surprises sur la qualite de la prestation.</p>
         <p>Vous savez a l'avance à quoi vous attendre, qu'il s'agisse du prix, du rendu et même de l'aspect du salon</p>
         <p>Alors, n'attendez plus !</p>
       </div>
-    </div>
-    <div class="home-marketingMessage">
+    </section>
+    <section class="home-marketingMessage">
       <h3>COIFFEUR, BARBIERS, REJOIGNEZ-NOUS !</h3>
       <p>Tereza, c'est un univers mode et beaute dans lequel votre salon et votre savoir-faire sauront être mis en valeur.</p>
       <p><strong>Notre but ?</strong></p>
@@ -154,7 +118,7 @@
       <p><strong>Envie de connaître votre clientèle ?</strong></p>
       <p>Le compte utilisateur est fait pour ça ! Vous avez accès aux statistiques que vos clients souhaitent partager pour une qualite de service optimale.</p>
       <p>N'hesitez plus !</p>
-    </div>
+    </section>
   </div>
 </div>
 </template>
@@ -164,21 +128,67 @@ export default {
   data() {
     return {
       haircut: '',
-      city: ''
+      city: '',
+      coiffeur: '',
+      hairdressers: [
+          {
+            name: "Henri de treges",
+            cp: "75015",
+            city: "Paris",
+            street: "15, rue de la convention",
+            photo_link: "https://s3.amazonaws.com/tereza-landing/Home/Coiffeur-du-mois_1.png",
+            geoloc: { lat: 48.845433, lng: 2.279132 }
+          },
+          {
+            name: "Nathalie Feuillade",
+            cp: "75014",
+            city: "Paris",
+            street: "14, rue henri bocquillon",
+            photo_link: "https://s3.amazonaws.com/tereza-landing/Home/Coiffeur-du-mois_2.png",
+            geoloc: { lat: 48.841485, lng: 2.289596 }
+          },
+          {
+            name: "Simone Duchamp",
+            cp: "75004",
+            city: "Paris",
+            street: "12, rue du temple",
+            photo_link: "https://s3.amazonaws.com/tereza-landing/Home/Coiffeur-du-mois_3.png",
+            geoloc: { lat: 48.858286, lng: 2.353283}
+          },
+        ]
+
     }
   },
   methods: {
     preSearch() {
       // Keep it to extend with later search. 
-      var queries = ['haircut', 'city'];
+      var queries = ['haircut', 'city'],
+          coiff = '';
 
       for (let q of queries) {
-        if ( window.localStorage.getItem(q) ) {
-          window.localStorage.removeItem(q);
+        if (q) {
+          window.localStorage.setItem(q, this.$data[q]); 
         }
-        window.localStorage.setItem(q, this.$data[q]); 
       }
-      this.$router.push({ name: 'prestation' });
+       if (this.coiffeur) {
+        var re = new RegExp(this.coiffeur, "gi");
+
+        coiff = this.hairdressers.filter( (h) => { 
+          if (re.exec(h.name)) { 
+            return h;
+          }
+        });
+
+        console.log("Coiff: ", coiff[0]);
+        if (coiff) {
+          for (let el in coiff[0]) {
+            window.localStorage.setItem(el, coiff[0][el]);
+          }
+          return this.$router.push({ name:'coiffeur' });
+          
+        }
+      }
+      return this.$router.push({ name: 'prestation' });
     }
   }
 }
@@ -196,7 +206,6 @@ export default {
 .searchContainer h1, h3 {
   text-align: center;
   color: #fff;
-  margin-top: 0;
 }
  
 .searchContainer h1 {
@@ -205,8 +214,6 @@ export default {
 
 h3 {
   font-size: 3.5em;
-  margin: 5vh auto 5vh auto;
-  
 }
 
 .searchContainer img {
@@ -220,12 +227,12 @@ h3 {
   align-items: center;
   justify-content: flex-start;
   background: #000;
-  width: 650px;
+  width: 40vw;
+  min-width: 768px;
   height: 70px;
   padding: 15px 0 15px 0;
   margin: 0 auto;
   border-radius: 5px;
-  margin-top: 5vh;
 }
 
 .searchbar form div input {
@@ -243,19 +250,23 @@ h3 {
   border: none;
 }
 
+section {
+  margin: 5vh auto 25vh auto;
+  min-height: 40vh;
+}
+
 .home-categoriesContainer {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   width: 80vw;
-  margin: 0 auto;
 }
 
 .home-categoriesList {
   display: flex;
   align-tiems: center;
-  margin: 0 auto 25vh auto;
+  margin: 0 auto 0 auto;
 } 
 
 .home-categoryCard {
@@ -271,8 +282,6 @@ h3 {
   text-align: center;
   color: #fff;
   font-size: 1.9em;
-  margin-top: 5vh;
-
 }
 
 .home-selectionContainer {
@@ -337,11 +346,18 @@ h3 {
 }
 
 .selectionCard-benef {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  flex-direction: column;
+  width: 100%;
+}
+
+.selectionCard-benef img {
   width: 60px;
   height: 60px;
-  background: grey;
   border-radius: 10px;
-  margin: auto;
+  margin: 0 auto;
 }
 
 .selectionCard-photo {
@@ -386,7 +402,6 @@ h3 {
 .home-benefitItem .benefitIcon img {
   display: block;
   height: 150px;
-  -webkit-filter: hue-rotate(80deg);
   margin: 25px auto;
   border-radius: 5px;
   box-shadow: 0 3px 10px rgba(0,0,0,0.4);

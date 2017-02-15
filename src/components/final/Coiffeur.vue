@@ -12,8 +12,7 @@
     </div>
     <div class="coiffeur-headerPicture"></div>
     <div class="coiffeur-headerMap">
-      {{ geocode }}
-      <gmap-map :center="geocode" :zoom="12"></gmap-map>
+      <img src="https://s3.amazonaws.com/tereza-landing/Home/photo_map.PNG"></img>
     </div>
   </div>
   <div class="coiffeur-description">
@@ -90,7 +89,7 @@ export default {
   align-items: flex-start;
   justify-content: center;
   width: 200px; 
-  height: 200px;
+  height: 100%;
   margin-left: 50px;
 }
 
@@ -109,7 +108,7 @@ export default {
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
   width: 65px;
-  height: 98%;
+  height: 100%;
   z-index: 1;
   padding: 0 35px;
 }
@@ -130,13 +129,20 @@ export default {
   width: 60vw;
   height: 30vh;
   background: url('https://s3.amazonaws.com/tereza-landing/Home/cover-henri.png') center center;
-  margin: 0 auto;
+  background-size: cover;
+  margin: 2vh auto;
   border-radius: 15px;
 }
 
 .coiffeur-headerMap {
   background: blue;
   width: 35%;
+  height: 100%;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.coiffeur-headerMap img {
   height: 100%;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
@@ -164,6 +170,7 @@ export default {
   width: 30vw;
   text-align: justify;
   margin: 0 15px;
+  font-family: Helvetica, sans-serif;
 }
 
 ul.coiffeur-tags {
@@ -222,8 +229,15 @@ ul.coiffeur-tags li {
 }
 
 .coiffeur-description button {
+  display: block;
   text-align: center;
-  margin: 0 auto;
+  margin: 15px auto;
+  background: #70D5DA;
+  color: #333;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.8em;
+  font-family: MarketDeco;
 }
 
 </style>
