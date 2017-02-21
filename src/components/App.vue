@@ -1,8 +1,5 @@
 <template>
   <div id="app">
-    <div class="logo">
-      <img src="https://s3.amazonaws.com/tereza-landing/Home/TEREZA-TYPO.png" alt="">
-    </div>
     <router-view></router-view>
   </div>
 </template>
@@ -23,12 +20,6 @@ export default {
 @font-face {
     font-family: "MarketDeco";
     src: url("https://s3.amazonaws.com/tereza-landing/Home/Market_Deco.woff") format('woff');
-}
-
-html {
-  background: url('https://s3.amazonaws.com/tereza-landing/Home/Arri%C3%A8re_plan.jpg') no-repeat top center;
-  background-size: cover;
-  
 }
 
 #app {
