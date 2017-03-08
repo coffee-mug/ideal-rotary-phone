@@ -1,37 +1,51 @@
 <template>
 <div class="results-container">
-  <h1> Resultats</h1>
-  <div class="results">
-    <div class="results-cards">
-      <Card v-for="o in hairdressers"
-        :o="o" 
-        :name="o.name"
-        :cp="o.cp"
-        :street="o.street"
-        :city="o.city"
-        :geocode="o.geoloc"
-        :photo_link="o.photo_link">
-      </Card>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="home-header">
+        <Search></Search>
+        <h1> Resultats</h1>
+      </div>
     </div>
-    <gmap-map
-      :center="{lat: 48.862840, lng: 2.333474 }"
-      :zoom="9"
-      class="results-map">
-      <gmap-marker v-for="h in hairdressers" 
-                   :position="h.geoloc"></gmap-marker>
-    </gmap-map>
+  </div>
+  <div class="row">
+    <div class="col-md-12 noPad">
+      <div class="results">
+        <div class="results-cards">
+          <Card v-for="o in hairdressers"
+            :o="o" 
+            :name="o.name"
+            :cp="o.cp"
+            :street="o.street"
+            :city="o.city"
+            :geocode="o.geoloc"
+            :photo_link="o.photo_link">
+          </Card>
+        </div>
+        <gmap-map
+          :center="{lat: 48.862840, lng: 2.333474 }"
+          :zoom="9"
+          class="results-map">
+          <gmap-marker v-for="h in hairdressers" 
+                       :position="h.geoloc"></gmap-marker>
+        </gmap-map>
+      </div>
+    </div>
   </div>
 </div>
 </template>
 
 <style>
-.results-container {
-  background: url('https://s3.amazonaws.com/tereza-landing/Home/Arri%C3%A8re_plan.jpg') no-repeat 15% center;
+.home-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: url('https://s3.amazonaws.com/tereza-landing/BG0.png') no-repeat center center;
   background-size: cover;
-  margin-top: 10vh;
-  padding: 15px;
+  min-height: 30vh;
+  height: 400px;
 }
-
 h1 {
   color: #fff;
   text-align: center;
@@ -39,8 +53,10 @@ h1 {
 .results {
   display: flex;
   align-items: flex-start;
+  background: url('https://s3.amazonaws.com/tereza-landing/BG1.png') no-repeat center center;
+  background-size: cover;
   justify-content: center;
-  width: 80vw;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -56,6 +72,7 @@ h1 {
 
 <script>
 import Card from '../funnel/Card.vue';
+import Search from '../final/Search.vue';
 export default {
   data() {
     return {
@@ -120,7 +137,8 @@ export default {
     });
   },
   components: {
-    'Card': Card
+    'Card': Card,
+    'Search': Search
   } 
 }
 

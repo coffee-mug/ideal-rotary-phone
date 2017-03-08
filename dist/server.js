@@ -12,19 +12,14 @@ var express = require('express'),
     loginRoute = require('./routes/login');
 
 
-/*** Models **/
-var Users = require('./models/users'),
-    Store = require('./models/stores'),
-    Prospection = require('./models/prospection'),
-    wonderfulSalons = require('./models/wonderful_salons'),
-    prestations = require('./models/prestations'),
-    offers = require('./models/offers');
-
 var moment = require('moment');
 
+
+// Server instance
 var app = express(),
     PORT = process.env.PORT || 8000;
 
+// used for serving static files, accepting json, ... leave it as is.
 app.use(serveStatic(__dirname));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());

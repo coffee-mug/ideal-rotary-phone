@@ -8,7 +8,7 @@
           <h2 class="text-center">Simplifiez-vous la vie !</h2>
         </div>
         <div class="home-header-search">
-          
+         <Search v-on:search(></Search> 
         </div>
       </section>
     </div>
@@ -141,6 +141,7 @@
 </template>
 
 <script>
+import Search from "./Search.vue";
 export default {
   data() {
     return {
@@ -176,37 +177,9 @@ export default {
 
     }
   },
-  methods: {
-    preSearch() {
-      // Keep it to extend with later search. 
-      var queries = ['haircut', 'city'],
-          coiff = '';
+  components: {
+    'Search': Search
 
-      for (let q of queries) {
-        if (q) {
-          window.localStorage.setItem(q, this.$data[q]); 
-        }
-      }
-       if (this.coiffeur) {
-        var re = new RegExp(this.coiffeur, "gi");
-
-        coiff = this.hairdressers.filter( (h) => { 
-          if (re.exec(h.name)) { 
-            return h;
-          }
-        });
-
-        console.log("Coiff: ", coiff[0]);
-        if (coiff) {
-          for (let el in coiff[0]) {
-            window.localStorage.setItem(el, coiff[0][el]);
-          }
-          return this.$router.push({ name:'coiffeur' });
-          
-        }
-      }
-      return this.$router.push({ name: 'prestation' });
-    }
   }
 }
 </script>
