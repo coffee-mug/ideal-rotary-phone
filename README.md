@@ -23,9 +23,9 @@ For detailed explanation on how things work, consult the [docs for vue-loader](h
 # Dans une console, depuis le root (tereza), lancer le serveur de dev webpack pour le front
 npm run dev
 
-``` bash
 # Pour le serveur, se rendre dans tereza/dist et depuis une autre console (considérer utiliser foreman plus tard) :
 node server.js
+```
 
 ## BDD
 
@@ -40,9 +40,11 @@ node server.js
 
 ## Serveur
 
-# dist/server.js : le fichier contenant le serveur [express.js](http://expressjs.com/fr/) 
-# La partie login / création de compte est déjà bien implémentée, avec une bonne lib pour la [sécurité des comptes (hash+salt des mdp)](https://github.com/ericelliott/credential)
-# Pour l'implémentation du login FB et Google, une fois les apps créés dans le dev panel respectif de chaque provider, on utilisera [passport.js](http://passportjs.org/)
+dist/server.js : le fichier contenant le serveur [express.js](http://expressjs.com/fr/) 
+
+La partie login / création de compte est déjà bien implémentée, avec une bonne lib pour la [sécurité des comptes (hash+salt des mdp)](https://github.com/ericelliott/credential)
+
+Pour l'implémentation du login FB et Google, une fois les apps créés dans le dev panel respectif de chaque provider, on utilisera [passport.js](http://passportjs.org/)
  
 ## Deploiement
 ``` bash
@@ -53,3 +55,4 @@ git commit
 git push origin master # sur git
 
 npm run deploy # sur heroku, la "prod" actuelle
+```
