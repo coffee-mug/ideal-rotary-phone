@@ -29,14 +29,13 @@ node server.js
 
 ## BDD
 
-# On utilise principalement deux solutions pour définir les modèles, les connecteurs et pour effectuer des appels
-# depuis serveur.js, qu'on pourra renommer api.js éventuellement
+On utilise principalement deux solutions pour définir les modèles, les connecteurs et pour effectuer des appels depuis serveur.js, qu'on pourra renommer api.js éventuellement
 
-# [Knex.js](http://knexjs.org/)
-# [Bookshelf.js](http://bookshelfjs.org/)
-# [Tuto pour appréhender rapidement](https://travishorn.com/what-did-i-learn-this-week-knex-js-bookshelf-js-95d3490e3a6f#.x4h4dj7pe)
+[Knex.js](http://knexjs.org/)
+[Bookshelf.js](http://bookshelfjs.org/)
+[Tuto pour appréhender rapidement](https://travishorn.com/what-did-i-learn-this-week-knex-js-bookshelf-js-95d3490e3a6f#.x4h4dj7pe)
 
-# Comme expliqué, en local c'est la base sqlite qui est utilisée (stockée dans un fichier) et postgresql en "prod".
+Comme expliqué, en local c'est la base sqlite qui est utilisée (stockée dans un fichier) et postgresql en "prod".
 
 ## Serveur
 
@@ -46,7 +45,7 @@ La partie login / création de compte est déjà bien implémentée, avec une bo
 
 Pour l'implémentation du login FB et Google, une fois les apps créés dans le dev panel respectif de chaque provider, on utilisera [passport.js](http://passportjs.org/)
  
-## Deploiement
+## Déploiement
 ``` bash
 npm run build # minifie tout le front
 
