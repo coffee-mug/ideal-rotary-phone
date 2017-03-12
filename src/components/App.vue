@@ -10,7 +10,7 @@
         <div class="right-links">
             <router-link to="home">Parametre des cookies</router-link>
             <router-link to="home">Cookies</router-link>
-            <router-link to="home">Declaration de confidentialité</router-link>
+            <router-link to="home">Declaration de confidentialite</router-link>
             <router-link to="home">Condition d'utilisation</router-link>
             <router-link to="home">Responsable du site</router-link>
             <div class="text-footer">2017 Tereza FR</div>
@@ -74,7 +74,11 @@ body {
   float: right;
 }
 .footer .container .right-links a{
-  color: #D0E4E3;
+  color: #add7d6;
+  margin-right: 24px;
+}
+.footer .container .right-links a:last-of-type{
+  margin-right: 0;
 }
 .footer .container .right-links .text-footer{
   color: white;
