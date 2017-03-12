@@ -145,7 +145,7 @@
 
 .coiffeur-description {
   color: #fff;
-  background-color: #111111;
+  background-color: #111;
   padding-top: 8px;
 }
 
@@ -179,37 +179,8 @@ hr {
   border-bottom-right-radius: 15px;
 }
 
-.coiffeur-coordinates h1 {
-  text-transform: uppercase;
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-.coiffeur-name {
-  font-size: 20px;
-  margin: 0;
-}
-
 .coiffeur-descriptionContent {
   font-family: sans-serif;
-}
-
-ul.coiffeur-tags {
-  width: 100%;
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  font-size: 10px;
-} 
-
-ul.coiffeur-tags li {
-  display: inline-block;
-  border: 1px solid lightblue;
-  font-weight: bold;
-  padding: 3px;
-  margin-right: 2px;
-  border-radius: 3px;
-  text-transform: uppercase;
 }
 
 .coiffeur-avisCard {
@@ -231,7 +202,6 @@ ul.coiffeur-tags li {
   background: #444;
   padding: 6px 4px;
   text-transform: uppercase;
-  font-weight: bold;
 }
 
 .order-price {
@@ -242,7 +212,7 @@ ul.coiffeur-tags li {
   display: block;
   text-align: center;
   margin: 15px auto;
-  background: #70D5DA;
+  background: #add7d6;
   color: #333;
   border: none;
   border-radius: 5px;

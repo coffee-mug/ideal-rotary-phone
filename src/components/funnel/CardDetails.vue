@@ -67,7 +67,7 @@ ul.card-tags {
 
 .card-tags li {
   display: inline-block;
-  border: 1px solid #d0e4e3;
+  border: 1px solid #add7d6;
   border-radius: 3px;
   border-radius: 3px;
   padding: 1px 3px;
