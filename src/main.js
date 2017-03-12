@@ -24,6 +24,7 @@ import Results from './components/final/Results.vue';
 import Calendar from './components/final/Calendar.vue';
 import Coiffeur from './components/final/Coiffeur.vue';
 import Search from './components/final/Search.vue';
+import Navbar from './components/final/Navbar.vue';
 
 import moment from 'moment'
 

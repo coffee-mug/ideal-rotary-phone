@@ -1,7 +1,6 @@
 <template>
-<div class="container-fluid nopad">
   <div class="row">
-    <div class="col-md-12 xs-12 nopad">
+    <div class="col-md-12 xs-12">
       <section class="home-header">
         <div class="home-header-title">
           <h1 class="text-center">Tereza</h1>
@@ -12,41 +11,45 @@
         </div>
       </section>
     </div>
-  </div>
   <div class="row">
-    <div class="col-md-12 col-xs-12 nopad">
+    <div class="col-md-12 col-xs-12">
       <section class="home-categories">
-        <hr>
         <h3>Nos categories</h3>
-        <div class="home-categoriesList">
-          <div class="home-categoryCard">
-            <img class="img-responsive" src="https://s3.amazonaws.com/tereza-landing/Home/Categorie-Homme.png" alt="">
-            <p class="text-center blue">HOMMES</p>
-          </div>
-          <div class="home-categoryCard">
-            <img class="img-responsive" src="https://s3.amazonaws.com/tereza-landing/Home/Categorie-Femmes.png" alt="">
-            <p class="text-center pink">FEMMES</p>
-          </div>
-          <div class="home-categoryCard">
-            <img class="img-responsive" src="https://s3.amazonaws.com/tereza-landing/Home/Categorie-barbier.png" alt="">
-            <p class="text-center blue">BARBIERS</p>
-          </div>
-          <div class="home-categoryCard">
-            <img class="img-responsive" src="https://s3.amazonaws.com/tereza-landing/Home/Categorie-Lissage.png" alt="">
-            <p class="text-center pink">A DOMICILE</p>
-          </div>
+        <div class="row">
+          <div class="home-categoryCard col-xs-3">
+              <img class="img-responsive" src="https://s3.amazonaws.com/tereza-landing/Home/Categorie-Homme.png" alt="">
+              <p class="text-center blue">HOMMES</p>
+            </div>
+
+            <div class="home-categoryCard col-xs-3">
+              <img class="img-responsive" src="https://s3.amazonaws.com/tereza-landing/Home/Categorie-Femmes.png" alt="">
+              <p class="text-center pink">FEMMES</p>
+            </div>
+
+            <div class="home-categoryCard col-xs-3">
+              <img class="img-responsive" src="https://s3.amazonaws.com/tereza-landing/Home/Categorie-barbier.png" alt="">
+              <p class="text-center blue">BARBIERS</p>
+            </div>
+
+            <div class="home-categoryCard col-xs-3">
+              <img class="img-responsive" src="https://s3.amazonaws.com/tereza-landing/Home/Categorie-Lissage.png" alt="">
+              <p class="text-center pink">A DOMICILE</p>
+            </div>
         </div>
       </section>
     </div>
   </div>
+
+  <div class="diviseur"></div>
+
   <div class="row">
-    <div class="col-md-12 col-xs-12 nopad">
+    <div class="col-md-12 col-xs-12">
       <section class="home-selection">
         <h3>LES COIFFEURS DU MOIS</h3>
         <div class="row">
           <div class="home-selectionList">
             <template v-for="c in hairdressers">
-              <div class="col-md-4 col-xs-12 nopad">
+              <div class="col-md-4 col-xs-12">
                 <div class="home-selectionCard">
                   <div class="selectionCard-photo">
                     <img :src="c.photo_link" alt="">
@@ -64,17 +67,23 @@
                       </ul>
                     </div>
                     <div class="selectionCard-benefits">
-                      <div class="selectionCard-benef">
-                        <img src="https://s3.amazonaws.com/tereza-landing/Home/Scissor2.png" alt="">
-                        <p class="text-center">3 coiffeurs disponibles</p>
-                      </div>
-                      <div class="selectionCard-benef">
-                        <img src="https://s3.amazonaws.com/tereza-landing/Home/Pouce2.png" alt="">
-                        <p class="text-center">Excellents avis</p>
-                      </div>
-                      <div class="selectionCard-benef">
-                        <img src="https://s3.amazonaws.com/tereza-landing/Home/Pouce2.png" alt="">
-                        <p class="text-center">Coiffeur certifie</p>
+                      <div class="row">
+
+                        <div class="col-xs-4 benefits-card">
+                          <img src="https://s3.amazonaws.com/tereza-landing/Home/Scissor2.png" alt="">
+                          <p class="text-center">3 coiffeurs disponibles</p>
+                        </div>
+
+                        <div class="col-xs-4 benefits-card">
+                          <img src="https://s3.amazonaws.com/tereza-landing/Home/Pouce2.png" alt="">
+                          <p class="text-center">Excellents avis</p>
+                        </div>
+
+                        <div class="col-xs-4 benefits-card">
+                          <img src="https://s3.amazonaws.com/tereza-landing/Home/Pouce2.png" alt="">
+                          <p class="text-center">Coiffeur certifie</p>
+                        </div>
+
                       </div>
                     </div>
                     <button>PRENDRE RENDEZ-VOUS</button>
@@ -89,7 +98,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-12 col-xs-12 nopad">
+    <div class="col-md-12 col-xs-12">
       <section class="benefits">
         <div class="home-benefitItem">
           <div class="benefitIcon">
@@ -185,11 +194,6 @@ export default {
 </script>
 
 <style scoped>
-.nopad {
-  padding-left: 0;
-  padding-right: 0;
-}
-
 hr {
   background: rgba(255,255,255,0.3);
   height: 55px;
@@ -202,109 +206,88 @@ hr {
 }
 
 .home-header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
   background: url('https://s3.amazonaws.com/tereza-landing/BG0.png') no-repeat center center;
   background-size: cover;
-  min-height: 70vh;
-  height: 800px;
 }
+
 
 .home-categories {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  flex-direction: column;
-  background: url('https://s3.amazonaws.com/tereza-landing/BG1.png') no-repeat top 0 left 0 fixed;
+  /* background: url('https://s3.amazonaws.com/tereza-landing/BG1.png') no-repeat top 0 left 0 fixed; */
+  background: black;
   background-size: cover;
-  min-height: 60vh;
-  height: 500px;
 }
 
-.home-categoriesList {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  width: 60%;
-}
-
-.home-categoryCard {
+.home-categories .row .home-categoryCard {
   margin: 0 auto;
   padding: 15px;
 }
 
+.home-categories .row .home-categoryCard .img-responsive{
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.diviseur{
+  width: 100%;
+  height: 50px;
+  background-color: #4D4F4E;
+}
+
 .home-selection {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  flex-direction: column;
-  background: url('https://s3.amazonaws.com/tereza-landing/BG2.png') no-repeat center center fixed;
+  /* background: url('https://s3.amazonaws.com/tereza-landing/BG2.png') no-repeat center center fixed; */
+  background: black;
   background-size: cover;
-  min-height: 80vh;
 }
 
 .home-selectionList {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  witdth: 100%;
-}
-
-@media screen and (max-width: 700px) {
-  .home-selectionList {
-    flex-direction: column;
-  }
-
+  width: 100%;
 }
 
 .home-selectionCard {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-  margin: 10px 10px;
-  height: 400px;
-  width: 550px; 
+  height: 320px;
+  width: 80%; 
   background: cyan;
   border-radius: 5px;
   padding: 3px;
-}
-
-.selectionCard-coordinates, .selectionCard-name, .selectionCard-benef {
-  background: black;
-  border-radius: 5px;
-  width: 100%;
-  margin: 3px 0;
-  color: #fff;
+  margin: 0 auto;
 }
 
 .selectionCard-photo img{
-  width: 100%;
+  float: left;
+  width: 35%;
 }
 
 .selectionCard-infos {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  flex-direction: column;
-  padding: 20px;
+  float: right;
+  width: 65%;
 }
-
-.selectionCard-benefits {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
+.selectionCard-coordinates, .selectionCard-name{
+  background: black;
+  border-radius: 5px;
+  width: 80%;
+  margin: 3px 10px;
+  color: #fff;
 }
-
+.selectionCard-benefits{
+  border-radius: 5px;
+  width: 90%;
+  margin: 0 auto;
+  color: #fff;
+  margin-right: 0;
+}
+.selectionCard-benefits .benefits-card {
+  background: black;
+  width: 30%;
+  margin-right: 5px;
+}
+.selectionCard-benefits .benefits-card img {
+  width: 60%;
+}
+.selectionCard-benefits .benefits-card p {
+  font-size: 60%;
+}
 .selectionCard-benef {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  flex-direction: column;
   margin: 0 5px;
 }
 
@@ -383,8 +366,9 @@ hr {
 h3 {
   color: #fff;
   font-size: 5rem;
-  margin-top: 50px;
-  margin-bottom: 15px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  text-align: center;
 }
 
 .blue, .pink {
