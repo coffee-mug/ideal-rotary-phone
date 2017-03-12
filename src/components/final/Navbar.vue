@@ -18,5 +18,7 @@ export default {
 </script>
 
 <style>
-
+.navbar{
+    margin-bottom:0px;
+}
 </style>
