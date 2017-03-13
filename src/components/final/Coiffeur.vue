@@ -1,238 +1,213 @@
 <template>
-<div class="coiffeur">
-  <div class="coiffeur-header">
-    <div class="coiffeur-avatar">
-      <img :src="photo_link" />
-      <ul class="coiffeur-socialList">
-        <li><img src="https://s3.amazonaws.com/tereza-landing/Home/FB-White.png" alt=""></li>
-        <li><img src="https://s3.amazonaws.com/tereza-landing/Home/Instagram-White.png" alt=""></li>
-        <li><img src="https://s3.amazonaws.com/tereza-landing/Home/Pinterest-logo.png" alt=""></li>
-        <li><img src="https://s3.amazonaws.com/tereza-landing/Home/Twitter-White.png" alt=""></li>
-      </ul>
-    </div>
-    <div class="coiffeur-headerPicture"></div>
-    <div class="coiffeur-headerMap">
-      <img src="https://s3.amazonaws.com/tereza-landing/Home/photo_map.PNG"></img>
-    </div>
-  </div>
-  <div class="coiffeur-description">
-    <div class="coiffeur-coordinates">
-      <p>{{name}}</p>
-      <p></p>
-      <p>{{ street }}</p>
-      <p>{{cp}}, {{city}}</p>
-    </div>
-    <div class="coiffeur-descriptionContent">
-      <p>
-        Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte.
-      </p>
-      <ul class="coiffeur-tags">
-        <li>Brushing</li>
-        <li>Lissage</li>
-        <li>Coloration</li>
-        <li>Barbes</li>
-      </ul>
-      <hr>
-      <div class="order-recap">
-        <p class="order-date">Lundi 16 Février 2017</p>
-        <p class="order-timeSlot">15:30 - 16:30</p>
-        <p class="order-haircut">Coupe Homme (Medium) </p>
-        <p class="order-addition">Shampooing </p>
-        <p class="order-addition">Lissage </p>
-        <p class="order-price">35 euros</p>
+  <div class="container-fluid nopad coiffeur">
+    <div class="row">
+      <div class="left-content col-md-9">
+        <div class="row col-md-12 coiffeur-header">
+          <div class="coiffeur-avatar">
+            <img :src="hairdresser.photo_link" />
+          </div>
+        </div>
+        <div class="row col-md-12 coiffeur-description">
+          <div class="row">
+            <div class="col-md-4">
+              <CardDetails :hairdresser="hairdresser"></CardDetails>
+            </div>
+            <div class="col-md-8">
+              <div class="coiffeur-descriptionContent">
+                <p>
+                  Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum
+                  est le faux texte standard de l'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble
+                  des morceaux de texte pour réaliser un livre spécimen de polices de texte.
+                </p>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div class="row coiffeur-appointment">
+            <div class="col-md-6">
+              <div class="appointment-header">Prendre rendez-vous</div>
+
+              <div class="form-horizontal">
+                <div class="form-group">
+                  <label for="haircut" class="col-md-4 control-label">Vous desirez :</label>
+                  <div class="col-md-8">
+                    <select class="form-control" id="haircut" v-model="haircut">
+                      <option></option>
+                      <option data-price="18">Coupe Homme</option>
+                      <option data-price="25">Coupe Femme</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="addition" class="col-md-4 control-label">Avec ceci :</label>
+                  <div class="col-md-8">
+                    <select class="form-control" id="addition" v-model="addition">
+                      <option></option>
+                      <option data-price="7">Shampooing</option>
+                      <option data-price="13">Shampooing + soin</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="extra" class="col-md-4 control-label">Un extra :</label>
+                  <div class="col-md-8">
+                    <select class="form-control" id="extra" v-model="extra">
+                      <option></option>
+                      <option data-price="3">Laque forte</option>
+                      <option data-price="32">Manucure</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-md-12">
+                    <button type="submit" class="btn btn-default">Valider mon rdv</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="order-recap">
+                <div class="appointment-header">Recapitulatif</div>
+                <p class="order-time">
+                  <span class="order-date">Lundi 16 Fevrier 2017</span>
+                  <br />
+                  <span class="order-timeSlot">15:30 - 16:30</span>
+                </p>
+                <p class="order-products">
+                  <span class="order-haircut">{{haircut}}</span>
+                  <span class="order-addition" v-if="addition != ''"><br />+ {{addition}}</span>
+                  <span class="order-extra" v-if="extra != ''"><br />+ {{extra}}</span>
+                </p>
+                <p class="order-price" v-if="price > 0">{{price}} euros</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <button>VALIDER LE RENDEZ-VOUS</button>
-    </div>
-    <div class="coiffeur-descriptionAvis">
-      <div class="coiffeur-avisCard">
-        <img src="http://placehold.it/60x60" alt="">
-        <div class="coiffeur-avisContent">
-          <p> * * * * * </p>
-          <p> Bonne prestation, un petit salon sympa, rapide et bien placé dans le 15</p>
+      <div class="right-content col-md-3">
+        <div class="coiffeur-headerMap row">
+          <img src="//s3.amazonaws.com/tereza-landing/Home/photo_map.PNG"></img>
+        </div>
+        <div class="coiffeur-descriptionAvis">
+          <div class="coiffeur-avisCard row" v-for="review in hairdresser.reviews">
+            <div class="col-md-4 coiffeur-avis-img">
+              <img src="//placehold.it/60x60" alt="">
+            </div>
+            <div class="coiffeur-avisContent col-md-8">
+              <div class="coiffeur-rating">
+                <ul>
+                  <li v-for="i in review.rating"><img src="//s3.amazonaws.com/tereza-landing/Home/Rate.png" alt=""></li>
+                </ul>
+              </div>
+              <div class="coiffeur-comment" v-html="review.comment">
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      photo_link: window.localStorage.getItem('photo_link'),
-      name: window.localStorage.getItem('name'),
-      city: window.localStorage.getItem('city'),
-      street: window.localStorage.getItem('street'),
-      cp: window.localStorage.getItem('cp'),
-      geocode: { lat: parseFloat(window.localStorage.getItem('lat'),10), lng: parseFloat(window.localStorage.getItem('lng'), 10) }
+  import CardDetails from '../funnel/CardDetails.vue';
+  export default {
+    data() {
+      return {
+        hairdresser: JSON.parse(window.localStorage.getItem('hairdresser')),
+        haircut: "",
+        addition: "",
+        extra: "",
+        price: 0
+      }
+    },
+    watch: {
+      haircut: function () {
+        this.calculateTotal();
+      },
+      addition: function () {
+        this.calculateTotal();
+      },
+      extra: function () {
+        this.calculateTotal();
+      },
+    },
+    methods: {
+      calculateTotal: function () {
+        var total = 0;
+        var haircut = document.getElementById("haircut");
+        var addition = document.getElementById("addition");
+        var extra = document.getElementById("extra");
+        var haircutPrice = parseInt(haircut.options[haircut.selectedIndex].getAttribute('data-price'));
+        total += isNaN(haircutPrice) ? 0 : haircutPrice;
+        var additionPrice = parseInt(addition.options[addition.selectedIndex].getAttribute('data-price'));
+        total += isNaN(additionPrice) ? 0 : additionPrice;
+        var extraPrice = parseInt(extra.options[extra.selectedIndex].getAttribute('data-price'));
+        total += isNaN(extraPrice) ? 0 : extraPrice;
+        this.price = total;
+      }
+    },
+    components: {
+      'CardDetails': CardDetails
     }
   }
-  
-}
 </script>
 
 <style>
 .coiffeur {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  width: 100vw;
-  height: 100vh;
   background: black;
+  margin: 0 auto;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.coiffeur > .row {
+  max-width: 1280px;
   margin: 0 auto;
 }
 
+/* left */
+.left-content {
+  padding-right: 30px;
+}
+
+.coiffeur-header {
+  background: url('//s3.amazonaws.com/tereza-landing/Home/cover-henri.png') center center;
+  background-size: cover;
+  border-radius: 8px 8px 0 0;
+  padding: 12px;
+}
+
 .coiffeur-avatar {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  width: 200px; 
-  height: 100%;
-  margin-left: 50px;
+  width: 200px;
+  height: auto;
+  overflow: hidden;
+  max-height: 160px;
+  border-radius: 8px;
 }
 
 .coiffeur-avatar img {
   height: 100%;
   width: 100%;
-  border-radius: 15px;
   z-index: 2;
 }
 
-.coiffeur-avatar ul {
-  position: relative;
-  left: -15px;
-  list-style-type: none;
-  background: #111;
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
-  width: 65px;
-  height: 100%;
-  z-index: 1;
-  padding: 0 35px;
-}
-
-.coiffeur-avatar ul li {
-  display: block;
-  margin-bottom: 5px;
-  color: #fff;
-  margin-top: 20px;
-  width: 25px;
-}
-
-
-.coiffeur-header {
-  display: inline-flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 60vw;
-  height: 30vh;
-  background: url('https://s3.amazonaws.com/tereza-landing/Home/cover-henri.png') center center;
-  background-size: cover;
-  margin: 2vh auto;
-  border-radius: 15px;
-}
-
-.coiffeur-headerMap {
-  background: blue;
-  width: 35%;
-  height: 100%;
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
-}
-
-.coiffeur-headerMap img {
-  height: 100%;
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
-}
-
 .coiffeur-description {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  flex-orientation: column;
-  width: 60vw;
-  height: 100vh;
   color: #fff;
-  padding: 10px 5px;
-  margin-top: 15px;
-}
-
-.coiffeur-coordinates h1 {
-  text-transform: uppercase;
-  font-size: 1.5rem;
-  font-weight: bold;
+  background-color: #111;
+  padding-top: 8px;
 }
 
 .coiffeur-descriptionContent {
-  width: 30vw;
-  text-align: justify;
-  margin: 0 15px;
-  font-family: Helvetica, sans-serif;
-}
-
-ul.coiffeur-tags {
-  width: 100%;
-  list-style-type: none;
-  margin-top: 25px;
-}
-
-ul.coiffeur-tags li {
-  display: inline-block;
-  border: 1px solid lightblue;
-  font-weight: bold;
-  padding: 3px;
-  margin-right: 2px;
-  border-radius: 3px;
-  text-transform: uppercase;
-}
-
-.coiffeur-avisCard {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  width: 15vw;
-  text-align: justify;
-  padding: 5px 3px;
-}
-
-.coiffeur-avisCard > img {
-  height: 70px;
-  width: 70px;
-  margin-right: 15px;
-  border-radius: 5px;
-}
-
-.order-recap {
-  position: relative;
-  background: #444;
-  padding: 6px 4px;
-  text-transform: uppercase;
-  font-weight: bold;
-  margin-top: 65px;
-}
-
-.order-recap:before {
-  content: 'RECAPITULATIF';
-  position: absolute;
-  top: -30px;
-  height: 30px;
-  left: 0;
-  background: #444;
-  padding: 5px;
-}
-
-.order-price {
-  text-align: right;
+  font-family: sans-serif;
+  font-size: 16px;
 }
 
 .coiffeur-description button {
   display: block;
   text-align: center;
   margin: 15px auto;
-  background: #70D5DA;
+  background: #add7d6;
   color: #333;
   border: none;
   border-radius: 5px;
@@ -240,4 +215,91 @@ ul.coiffeur-tags li {
   font-family: MarketDeco;
 }
 
+.coiffeur-appointment {
+  margin-top: 24px;
+}
+
+.appointment-header {
+  font-size: 32px;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+hr {
+  margin: 12px auto;
+  width: 75%;
+  border-top: 2px solid #666;
+}
+
+.order-recap {
+  background: #444;
+  padding: 0 15px;
+  padding-bottom: 2px;
+  text-transform: uppercase;
+  border-radius: 8px;
+  font-size: 18px;
+}
+
+.order-price {
+  text-align: right;
+}
+
+.order-products {
+  margin-bottom: 0;
+}
+
+/* right */
+.coiffeur-headerMap {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.coiffeur-headerMap img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.coiffeur-avisCard {
+  padding: 5px 0;
+  font-size: 11px;
+  margin-top: 12px;
+}
+
+.coiffeur-avisCard .coiffeur-avis-img {
+  padding-left: 0;
+}
+
+.coiffeur-avisCard .coiffeur-avis-img img {
+  border-radius: 8px;
+  width: 100%;
+  height: auto;
+}
+
+.coiffeur-rating ul {
+    margin-bottom: 4px;
+}
+
+.coiffeur-rating ul {
+  padding: 0;
+}
+
+.coiffeur-rating ul li {
+  display: inline;
+}
+
+.coiffeur-rating ul li img {
+  width: 20px;
+  background: #fff;
+}
+
+.coiffeur-avisContent {
+  background: #111;
+  padding: 6px 15px;
+  border-radius: 8px;
+}
+
+.coiffeur-comment {
+  color: #fff;
+}
 </style>

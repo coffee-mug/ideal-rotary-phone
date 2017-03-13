@@ -1,118 +1,84 @@
 <template>
-<div>
-  <div class="card">
+<div class="card">
+    <div class="card-left col-xs-6">
       <div class="card-photo">
-        <img :src="photo_link"  alt="">
+          <img :src="hairdresser.photo_link" alt="">
       </div>
-      <div class="card-infos">
-        <div class="card-name">
-          <p>{{ name }}</p>
+    </div>
+    <div class="card-right col-xs-6">
+      <div class="card-data">
+        <CardDetails :hairdresser="hairdresser"></CardDetails>
+        <div class="card-cta">
+          <p class="btn-profile" @click="saveInfoAndGo">Voir le profil complet ></p>
+          <p class="btn-appointment" @click="saveInfoAndGo">Prendre rendez-vous</p>
         </div>
-        <div class="card-rating">
-          <ul>
-            <li><img src="https://s3.amazonaws.com/tereza-landing/Home/Rate.png" alt=""></li>
-            <li><img src="https://s3.amazonaws.com/tereza-landing/Home/Rate.png" alt=""></li>
-            <li><img src="https://s3.amazonaws.com/tereza-landing/Home/Rate.png" alt=""></li>
-            <li><img src="https://s3.amazonaws.com/tereza-landing/Home/Rate.png" alt=""></li>
-            <li><img src="https://s3.amazonaws.com/tereza-landing/Home/Rate.png" alt=""></li>
-          </ul>
-        </div>
-        <div class="card-coordinates">
-          <p class="card-address">{{ street }} <br> {{ city }}, {{ cp }}</p>
-          <ul class="card-tags">
-            <li>Brushing</li> 
-            <li>Coupe Homme</li> 
-            <li>coupe Femme</li>
-          </ul>
-        </div>
-        <div class="card-benefits">
-          <div class="card-benef"></div>
-          <div class="card-benef"></div>
-          <div class="card-benef"></div>
-        </div>
-        <p class="card-cta" @click="saveInfoAndGo">PRENDRE RENDEZ-VOUS</p>
       </div>
     </div>
   </div>
-</div>
 </template>
 
 <style scoped>
 .card {
-  display: flex;
-  flex-orientation: column;
-  align-items: flex-start;
-  justify-content: space-between;
-  width: 650px;
-  margin: 0 auto 5px auto;
-  height: 300px;
   background: rgba(255,255,255,0.3);
   padding: 15px;
-  border-radius: 5px;
+  border-top: 3px solid white;
+}
+.card:first-of-type {
+  border-top: none;
+  border-radius: 8px 8px 0 0;
+}
+.card:last-of-type {
+  border-radius: 0 0 8px 8px;
+}
+
+.card-left {
+  padding-left: 0;
 }
 
 .card-photo {
-  width: 40%;
-  height: 95%;
+  max-height: 248px;
   overflow: hidden;
-  border-radius: 25px;
+  border-radius: 8px;
+  padding: 0;
 }
 
 .card-photo img {
   display: block;
   margin: 0 auto;
   width: 100%;
-  padding: 15px;
-  margin-top: -5%;
 }
 
-.card-infos {
-  width: 60%;
-  padding: 15px;
-  background: black;
+.card-right {
+  position: relative;
+  padding-right: 0;
+}
+
+.card-data {
   color: #fff;
-  height: 95%;
-  border-radius: 15px;
-}
-
-.card-name p {
-  font-size: 1.8em;
+  background: black;
+  width: 100%;
+  min-height: 248px;
+  height: 100%;
+  padding: 8px;
+  border-radius: 8px;
 }
 
 .card-cta {
-  font-size: 1.7em;
   text-align: center;
+  cursor: pointer;
+  text-align: right;
 }
 
-ul.card-tags {
-  width: 100%; 
+.card-cta .btn-profile {
+  font-size: 10px;
+  margin-bottom: 0;
 }
 
-.card-tags, .card-rating ul {
-  padding: 0;
+.card-cta .btn-appointment {
+  font-size: 20px;
 }
 
-.card-rating ul li {
-  display: inline;
-}
-
-.card-rating ul li img {
-  width: 20px;
-  background: #fff;
-}
-
-.card-tags {
-  margin-bottom: 25px;
-}
-
-.card-tags li {
-  display: inline;
-  border: 1px solid cyan;
-  border-radius: 3px;
-  padding: 3px;
-}
 </style>
-
 
 <script>
 /** 
@@ -124,6 +90,8 @@ ul.card-tags {
 import moment from 'moment';
 moment.locale('fr');
 
+import CardDetails from './CardDetails.vue';
+
 export default {
   data() {
     return {
@@ -134,12 +102,7 @@ export default {
     }
   },
   props: [
-    'photo_link',
-    'cp',
-    'street',
-    'city',
-    'name',
-    'geocode'
+    'hairdresser'
   ],
   computed: {
     secondDate() {
@@ -151,15 +114,7 @@ export default {
   },
   methods: {
     saveInfoAndGo() {
-      var data = ['photo_link', 'cp', 'street', 'city', 'name'];
-      var geo = { lat: this["geocode"]["lat"], lng: this["geocode"]["lng"] };
-
-      window.localStorage.setItem("lat", geo['lat']);
-      window.localStorage.setItem("lng", geo['lng']);
-
-      data.forEach( (e) => {
-          window.localStorage.setItem(e, this[e]);
-        });
+      window.localStorage.setItem("hairdresser", JSON.stringify(this["hairdresser"]));
 
       this.$router.push('coiffeur');
     },
@@ -226,6 +181,9 @@ export default {
       }
       return results; 
     }
+  },
+  components: {
+      'CardDetails': CardDetails
   }
 }
 </script>
