@@ -30,7 +30,7 @@
 
 <style scoped>
 .card-name p {
-  font-size: 26px;
+  font-size: 22px;
   margin-bottom: 0;
 }
 

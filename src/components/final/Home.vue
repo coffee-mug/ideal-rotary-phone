@@ -41,7 +41,7 @@
     </section>
 
   <div class="diviseur"></div>
-  
+
 <section class="home-selection">
   <div class="row">
     <div class="col-md-12 col-xs-12">
@@ -119,6 +119,7 @@
   <div class="diviseur"></div>
   
   <section class="marketing">
+  <div class="row">
     <h3 class="text-center">COIFFEUR, BARBIERS, REJOIGNEZ-NOUS !</h3>
     <div class="marketing-text">
       <p class="text-center">Tereza, c'est un univers mode et beaute dans lequel votre salon et votre savoir-faire sauront être mis en valeur.</p>
@@ -128,6 +129,7 @@
       <p>Le compte utilisateur est fait pour ça ! Vous avez accès aux statistiques que vos clients souhaitent partager pour une qualite de service optimale.</p>
       <p>N'hesitez plus !</p>
     </div>
+  </div>
     
   </section>
 
@@ -185,6 +187,7 @@ export default {
 </script>
 
 <style scoped>
+
 hr {
   background: rgba(255,255,255,0.3);
   height: 55px;
@@ -242,13 +245,9 @@ hr {
   /* background: url('https://s3.amazonaws.com/tereza-landing/BG2.png') no-repeat center center fixed; */
   background: black;
   background-size: cover;
-  height: 340px;
+  height: auto;
 }
 
-.benefits-wrapper{
-  max-width: 100%;
-  margin: 0 auto;
-}
 .home-selectionList {
   width: 100%;
 }
@@ -265,6 +264,7 @@ hr {
 .selectionCard-photo img{
   float: left;
   width: 35%;
+  max-height: 220px;
 }
 
 .selectionCard-infos {
