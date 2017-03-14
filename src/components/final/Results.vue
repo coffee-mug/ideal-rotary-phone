@@ -1,5 +1,6 @@
 <template>
   <div class="results-container">
+    <Header></Header>
     <div class="row">
       <div class="col-md-12">
         <div class="row">
@@ -73,6 +74,7 @@
 <script>
   import Card from '../funnel/Card.vue';
   import Search from '../final/Search.vue';
+  import Header from '../funnel/Header.vue'
   export default {
     data() {
       return {
@@ -150,7 +152,8 @@
     },
     components: {
       'Card': Card,
-      'Search': Search
+      'Search': Search,
+      'Header': Header
     }
   }
 

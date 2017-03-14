@@ -1,5 +1,6 @@
 <template>
   <div class="container-fluid nopad coiffeur">
+    <Header></Header>
     <div class="row">
       <div class="left-content col-md-9">
         <div class="row col-md-12 coiffeur-header">
@@ -111,6 +112,7 @@
 
 <script>
   import CardDetails from '../funnel/CardDetails.vue';
+  import Header from '../funnel/Header.vue'
   export default {
     data() {
       return {
@@ -148,7 +150,8 @@
       }
     },
     components: {
-      'CardDetails': CardDetails
+      'CardDetails': CardDetails,
+      'Header': Header
     }
   }
 </script>

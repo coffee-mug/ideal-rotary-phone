@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Navbar></Navbar>
-    <div class="wrapper">
+    <div class="wrapper container">
       <router-view></router-view>
     </div>
     <!-- Footer of the page !-->
@@ -44,7 +44,8 @@ export default {
 }
 
 #app {
-  font-family: MarketDeco; 
+  font-family: MarketDeco;
+  background: black;
 }
 
 .logo h1 {
