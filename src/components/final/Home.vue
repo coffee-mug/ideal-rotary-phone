@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <div class="col-md-12 xs-12">
+    <div class="col-md-12 xs-12 noPad">
       <section class="home-header">
         <div class="home-header-title">
           <h1 class="text-center">Tereza</h1>
@@ -17,7 +17,7 @@
         <h3>Nos categories</h3>
       </div>
     </div>
-    <div class="row">
+    <div class="row home-">
       <div class="home-categoryCard col-xs-3">
         <img class="img-responsive" src="https://s3.amazonaws.com/tereza-landing/Home/Categorie-Homme.png" alt="">
         <p class="text-center blue">HOMMES</p>
@@ -44,7 +44,7 @@
 
 <section class="home-selection">
   <div class="row">
-    <div class="col-md-12 col-xs-12">
+    <div class="col-md-10 col-xs-12 col-md-offset-1">
       
         <h3>LES COIFFEURS DU MOIS</h3>
         <div class="row">
@@ -77,7 +77,7 @@
   <section class="benefits">
     <div class="row">
         <div class="benefits-wrapper">
-          <div class="col-xs-4 home-benefitItem">
+          <div class="col-xs-12 col-md-2 col-md-offset-3 home-benefitItem">
             <div class="benefitIcon">
               <img class="img-responsive" src="https://s3.amazonaws.com/tereza-landing/Home/CllickBof2.png" alt="">
               <p class="benefits-highlight">Votre coiffeur en deux clics</p>
@@ -89,7 +89,7 @@
             </div>
           </div>
 
-          <div class="col-xs-4 home-benefitItem">
+          <div class="col-xs-2 col-md-2 home-benefitItem">
             <div class="benefitIcon">
               <img class="img-responsive" src="https://s3.amazonaws.com/tereza-landing/Home/Hair2.png" alt="">
               <p class="benefits-highlight">Votre coupe preferee</p>
@@ -101,7 +101,7 @@
             </div>
           </div>
 
-          <div class="col-xs-4 home-benefitItem">
+          <div class="col-xs-12 col-md-2 home-benefitItem">
             <div class="benefitIcon">
               <img class="img-responsive" src="https://s3.amazonaws.com/tereza-landing/Home/localisation2.png" alt="">
               <p class="benefits-highlight">Meilleur coiffeur, au plus proche !</p>
@@ -120,14 +120,16 @@
   
   <section class="marketing">
   <div class="row">
-    <h3 class="text-center">COIFFEUR, BARBIERS, REJOIGNEZ-NOUS !</h3>
-    <div class="marketing-text">
-      <p class="text-center">Tereza, c'est un univers mode et beaute dans lequel votre salon et votre savoir-faire sauront être mis en valeur.</p>
-      <p class="text-center"><strong>Notre but ?</strong></p>
-      <p>Vous liberez de la prise de rendez-vous. Notre système de reservation en ligne vous libère du telephone. Vous pouvez maintenant vous recentrer sur votre activite.</p>
-      <p class="text-center"><strong>Envie de connaître votre clientèle ?</strong></p>
-      <p>Le compte utilisateur est fait pour ça ! Vous avez accès aux statistiques que vos clients souhaitent partager pour une qualite de service optimale.</p>
-      <p>N'hesitez plus !</p>
+    <div class="col-md-10 col-xs-12 col-md-offset-1">
+      <h3 class="text-center">COIFFEUR, BARBIERS, REJOIGNEZ-NOUS !</h3>
+      <div class="marketing-text">
+        <p class="text-center">Tereza, c'est un univers mode et beaute dans lequel votre salon et votre savoir-faire sauront être mis en valeur.</p>
+        <p class="text-center"><strong>Notre but ?</strong></p>
+        <p>Vous liberez de la prise de rendez-vous. Notre système de reservation en ligne vous libère du telephone. Vous pouvez maintenant vous recentrer sur votre activite.</p>
+        <p class="text-center"><strong>Envie de connaître votre clientèle ?</strong></p>
+        <p>Le compte utilisateur est fait pour ça ! Vous avez accès aux statistiques que vos clients souhaitent partager pour une qualite de service optimale.</p>
+        <p>N'hesitez plus !</p>
+      </div>
     </div>
   </div>
     
@@ -212,6 +214,10 @@ hr {
   /* background: url('https://s3.amazonaws.com/tereza-landing/BG1.png') no-repeat top 0 left 0 fixed; */
   background: black;
   background-size: cover;
+  width: 80%;
+  margin: 0 auto;
+  padding: 50px;
+
 }
 
 .home-categories .row .home-categoryCard {
@@ -250,6 +256,14 @@ hr {
 
 .home-selectionList {
   width: 100%;
+}
+
+@media screen and (min-width: 700px) {
+  .home-selectionList {
+    display: flex;
+    align-items: center;
+    min-height: 400px;
+  }
 }
 
 .home-selectionCard {
@@ -395,8 +409,17 @@ h3 {
 }
 
 .home-header-search{
-  width: 60%;
+  width: 70%;
   margin: 0 auto;
+  height: 40vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.noPad {
+  padding: 0;
 }
 
 </style>

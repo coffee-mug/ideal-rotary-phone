@@ -132,7 +132,6 @@ export default {
 <style>
 .funnel-prestation {
   width: 100vw;
-  height: 100vh;
 }
 
 .funnel-prestationBanner {

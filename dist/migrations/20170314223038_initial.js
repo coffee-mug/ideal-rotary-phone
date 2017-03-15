@@ -19,13 +19,15 @@ exports.up = function(knex, Promise) {
 		}),
     knex.schema.createTableIfNotExists('salon', (table) => {
       table.increments();
-      table.string('nationalId').unique();
-      table.string('mail').unique();
+      table.string('nationalId');
+      table.string('mail');
       table.string('name');
       table.string('street');
       table.string('city');
       table.string('postalCode');
       table.string('phone');
+      table.float('lat');
+      table.float('lng');
     }),
 
     knex.schema.createTableIfNotExists('profession', (table) => {
