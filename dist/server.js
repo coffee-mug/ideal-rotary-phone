@@ -1,35 +1,35 @@
 'use strict';
 
-var express = require('express'),
-    moment = require('moment');
-    path = require('path'),
-    serveStatic = require('serve-static'),
-    session = require('express-session'),
-    bodyParser = require('body-parser'),
-    passport = require('passport'),
-    localStrategy = require('passport-local').Strategy,
-    verify = require('./lib/verify.js'),
-    signupRoute = require('./routes/signup'),
-    loginRoute = require('./routes/login');
+var express = require('express');
+var moment = require('moment');
+var path = require('path');
+var serveStatic = require('serve-static');
+var session = require('express-session');
+var bodyParser = require('body-parser');
+var passport = require('passport');
+var localStrategy = require('passport-local').Strategy;
+//var verify = require('./lib/verify.js');
+//var signupRoute = require('./routes/signup');
+//var loginRoute = require('./routes/login');
 
 // Models
 var Salon = require('./models/salon');
 
 var app = express(),
-    PORT = process.env.PORT || 8000;
+    PORT = process.env.PORT || 3000;
 
 /** SERVER CONFIG **/
-app.use(serveStatic(__dirname));
+/*app.use(serveStatic(__dirname));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 // Required for passport
 app.use(session({ secret: 'youSuck', resave: false, saveUninitialized: true, cookie: { secure: false }  }));
 app.use(passport.initialize());
-app.use(passport.session({ secret: 'youSuck'}));
+app.use(passport.session({ secret: 'youSuck'}));*/
 
 
 /** AUTH CONFIG **/
-passport.use(new localStrategy({
+/*passport.use(new localStrategy({
     usernameField: 'email',
     passwordField: 'password',
     session: false
@@ -43,27 +43,27 @@ passport.serializeUser( (user, done) => {
 
 passport.deserializeUser( (user, done) => {
     done(null, user);
-});
+});*/
 
 
 /** ROUTES **/
-app.use('/signup', signupRoute);
+//app.use('/signup', signupRoute);
 
-app.post('/login', passport.authenticate('local'), (req, res) => {
+/*app.post('/login', passport.authenticate('local'), (req, res) => {
     res.json({userId: req.user.attributes.id});
-}); 
+});
 
 app.get('/logout', (req, res) => {
     req.logout();
     // Need to fix logout client side localStorage
     console.log('Ok, logged out');
     res.json();
-});
+});*/ 
 
 /*** SALONS ****/
 
 // GET: get all the salons, can filter by name or city.
-app.get('/api/hairdressers', (req, res) => {
+/*app.get('/api/hairdressers', (req, res) => {
   var limit = 10,
       name,
       city;
@@ -83,7 +83,7 @@ app.get('/api/hairdressers', (req, res) => {
     .then( (models) => {
      res.json(models); 
     });
-});
+});*/
 
 
 // Get salons list filtered by haircut + "haircut add-ons";
@@ -118,7 +118,6 @@ app.get('/api/haircuts/:coupe', (req, res) => {
 // Should return an object with lists of appoinments hours as values.
 // The appointment table would have one FK for the hairdresser, one for the customer
 // Use one column for the date and one column for the number of minutes past midnight. 
-
-app.listen(PORT, function() {
+/*app.listen(PORT, function() {
     console.log('Server listening on Port %s', PORT);
-});
+});*/
