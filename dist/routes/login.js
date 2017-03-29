@@ -8,7 +8,7 @@ var verify = require('../lib/verify.js');
 var router = express.Router();
 
 
-var Users = require('../models/users');
+//var Users = require('../models/users');
 
 passport.use(new localStrategy({
     usernameField: 'emailAddress',

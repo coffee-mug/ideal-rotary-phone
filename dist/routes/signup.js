@@ -4,7 +4,7 @@ var express = require('express');
 var router = express.Router();
 var credential = require('credential');
 
-var Users = require('../models/users');
+//var Users = require('../models/users');
 
 
 var pw = credential();

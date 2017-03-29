@@ -1,11 +1,29 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <Navbar></Navbar>
+    <div class="wrapper container-fluid">
+      <router-view></router-view>
+    </div>
+    <!-- Footer of the page !-->
+    <footer class="footer">
+      <div class="container">
+        <div class="right-links">
+            <router-link to="home">Parametre des cookies</router-link>
+            <router-link to="home">Cookies</router-link>
+            <router-link to="home">Declaration de confidentialite</router-link>
+            <router-link to="home">Condition d'utilisation</router-link>
+            <router-link to="home">Responsable du site</router-link>
+            <div class="text-footer">2017 Tereza FR</div>
+        </div>
+      </div>
+    </footer>
   </div>
 </template>
 
 <script>
+import Navbar from './final/Navbar.vue';
 export default {
+  
   name: 'app',
   data () {
     return {
@@ -13,6 +31,9 @@ export default {
       idTest: '1',
     }
   },
+  components: {
+    'Navbar': Navbar
+  }
 }
 </script>
 
@@ -23,7 +44,8 @@ export default {
 }
 
 #app {
-  font-family: MarketDeco; 
+  font-family: MarketDeco;
+  background: black;
 }
 
 .logo h1 {
@@ -39,5 +61,32 @@ export default {
 }
 body {
   background: none;
+}
+
+.footer {
+    height: 80px;
+    background-color: black;
+}
+.footer .container {
+    width: 100%;
+}
+.footer .container .right-links {
+  margin-top: 10px;
+  float: right;
+}
+.footer .container .right-links a{
+  color: #add7d6;
+  margin-right: 24px;
+}
+.footer .container .right-links a:last-of-type{
+  margin-right: 0;
+}
+.footer .container .right-links .text-footer{
+  color: white;
+  text-align: right;
+}
+
+.wrapper{
+  margin-top:50px;
 }
 </style>

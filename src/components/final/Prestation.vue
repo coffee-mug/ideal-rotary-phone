@@ -1,5 +1,6 @@
 <template>
 <div class="funnel-prestation">
+  <Header></Header>
   <div class="funnel-prestationBanner">
     <h1 class="text-center" style="font-size: 4.5em">LA PLATEFORME QUI VOUS RAPPROCHE</h1>
   </div>
@@ -82,7 +83,7 @@
 
 <script>
 import moment from 'moment';
-
+import Header from '../funnel/Header.vue'
 moment.locale('fr');
 
 export default {
@@ -122,13 +123,15 @@ export default {
       });
       this.$router.push({ name: "results" }); 
     }
-  }
+  },
+  components: {
+    'Header': Header
+  },
 }
 </script>
 <style>
 .funnel-prestation {
   width: 100vw;
-  height: 100vh;
 }
 
 .funnel-prestationBanner {
