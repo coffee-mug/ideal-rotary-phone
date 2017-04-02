@@ -2,7 +2,7 @@
 
 
 exports.up = function(knex, Promise) {
-  return Promise.all([
+  /*return Promise.all([
     knex.schema.createTableIfNotExists('professionnel', (table) => {
       table.increments();
       table.string('mail').unique();
@@ -74,11 +74,11 @@ exports.up = function(knex, Promise) {
       table.integer('appointment_id').unsigned().references('id').inTable('appointment');
       table.integer('prestation_id').unsigned().references('id').inTable('prestation');
     }),
-  ]);
+  ]);*/
 };
 
 exports.down = function(knex, Promise) {
-  return Promise.all([
+  /*return Promise.all([
     knex.schema.dropTableIfExists('professionnel'),
     knex.schema.dropTableIfExists('salon'),
     knex.schema.dropTableIfExists('profession'),
@@ -89,5 +89,5 @@ exports.down = function(knex, Promise) {
     knex.schema.dropTableIfExists('possede'),
     knex.schema.dropTableIfExists('compose'),
     knex.schema.dropTableIfExists('categories'),
-  ]);
+  ]);*/
 };
