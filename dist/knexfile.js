@@ -5,8 +5,7 @@ module.exports = {
         client: 'sqlite3',
         connection: {
           filename: './database.sqlite'
-        },
-        useNullAsDefault: true
+        }
     },
     'mysql': {
         client: 'mysql',
@@ -17,6 +16,8 @@ module.exports = {
             database : 'tereza',
             multipleStatements: true
         }
+        ,
+        useNullAsDefault: true
     },
     'production': {
         client: 'pg',

@@ -10,10 +10,12 @@ var _salon = require('../models/salon');
 var router = express.Router();
 
 var knexconfig = require('../knexfile');
-var knex = require('knex')({ client: 'mysql' },knexconfig);
+var knex = require('knex')({ client: 'mysql' });
 
 router.route('/').get(function(req, res) {
-        _salon.fetchAll().then(function(salon) { res.json({ salon }); });
+        _salon.fetchAll().then(function(salon) {
+            console.log(salon);
+            res.json({ salon }); });
     });
 
 router.route('/getSalonByCategorie/:categorie').get(function(req, res) {
