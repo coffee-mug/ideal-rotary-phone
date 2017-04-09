@@ -18,25 +18,21 @@
       </div>
     </div>
     <div class="row home-">
-      <div class="home-categoryCard col-xs-3">
+      <div class="home-categoryCard col-xs-4">
         <img class="img-responsive" src="https://s3.amazonaws.com/tereza-landing/Home/Categorie-Homme.png" alt="">
         <p class="text-center blue">HOMMES</p>
       </div>
       
-      <div class="home-categoryCard col-xs-3">
+      <div class="home-categoryCard col-xs-4">
         <img class="img-responsive" src="https://s3.amazonaws.com/tereza-landing/Home/Categorie-Femmes.png" alt="">
         <p class="text-center pink">FEMMES</p>
        </div>
        
-       <div class="home-categoryCard col-xs-3">
+       <div class="home-categoryCard col-xs-4">
           <img class="img-responsive" src="https://s3.amazonaws.com/tereza-landing/Home/Categorie-barbier.png" alt="">
           <p class="text-center blue">BARBIERS</p>
         </div>
-        
-        <div class="home-categoryCard col-xs-3">
-          <img class="img-responsive" src="https://s3.amazonaws.com/tereza-landing/Home/Categorie-Lissage.png" alt="">
-          <p class="text-center pink">A DOMICILE</p>
-        </div>
+
       </div>
     </section>
 
@@ -89,7 +85,7 @@
             </div>
           </div>
 
-          <div class="col-xs-2 col-md-2 home-benefitItem">
+          <div class="col-xs-12 col-md-2 col-md-offset-3 home-benefitItem">
             <div class="benefitIcon">
               <img class="img-responsive" src="https://s3.amazonaws.com/tereza-landing/Home/Hair2.png" alt="">
               <p class="benefits-highlight">Votre coupe preferee</p>
@@ -119,6 +115,7 @@
   <div class="diviseur"></div>
   
   <section class="marketing">
+
   <div class="row">
     <div class="col-md-10 col-xs-12 col-md-offset-1">
       <h3 class="text-center">COIFFEUR, BARBIERS, REJOIGNEZ-NOUS !</h3>
@@ -245,6 +242,7 @@ hr {
 .selectionCard-infos-button button{
   color: white;
   background: black;
+  margin-top: 15px;
 }
 
 .home-selection {
@@ -258,21 +256,13 @@ hr {
   width: 100%;
 }
 
-@media screen and (min-width: 700px) {
-  .home-selectionList {
-    display: flex;
-    align-items: center;
-    min-height: 400px;
-  }
-}
-
 .home-selectionCard {
   height: 230px;
   width: 80%; 
   background: cyan;
   border-radius: 5px;
   padding: 3px;
-  margin: 0 auto;
+  margin: 0 auto 15px;
 }
 
 .selectionCard-photo img{
