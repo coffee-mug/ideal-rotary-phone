@@ -56,7 +56,6 @@
 .results-map {
     position: relative;
     padding-bottom: calc(100% / 3 * 2);
-    overflow: hidden;
     border-radius: 8px;
     margin-left: 4px;
 }
@@ -66,7 +65,7 @@
     top: 0;
     left: 0;
     width: 100% !important;
-    height: 100% !important; 
+    height: 850px;
 }
 </style>
 

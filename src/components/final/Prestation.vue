@@ -46,7 +46,7 @@
             </div>
           </div>
 
-          <div class="form-group col-xs-12">
+         <!-- <div class="form-group col-xs-12">
             <label class="col-xs-2">Avec ceci ? :</label>
             <div class="col-xs-10">
               <select v-model="extra1" class="form-control">
@@ -73,23 +73,32 @@
                 <option>Lissage japonais</option>
               </select>
             </div>
+          </div> !-->
+          <div class="col-xs-12">
+          <div class="form-group col-xs-6">
+            <label for="hours" class="col-sm-2" style="text-align: left;">Horaire</label>
+            <div class="input-group clockpicker col-sm-10">
+              <input type="text" class="form-control" value="09:30">
+              <span class="input-group-addon">
+                <span class="glyphicon glyphicon-time" v-model="appointmentTime" type="time"></span>
+              </span>
+            </div>
+          </div>
+            <div class="form-group col-xs-6">
+              <label for="hours" class="col-sm-2">Date</label>
+              <div class="col-sm-10">
+                <calendar :date.sync="dateString" format="YYYY/MM/DD"></calendar>
+                <input v-model="appointmentDate" type="date" :minDate="minDate" min="minDate"/>
+              </div>
+            </div>
+            <!-- <div class="col-sm-6">
+              <input v-model="appointmentTime" type="time" />
+            </div> !-->
           </div>
 
           <div class="form-group col-xs-12">
-            <label for="hours" class="col-sm-6">Horaire</label>
-            <div class="col-sm-6">
-              <input v-model="appointmentTime" type="time" />
-            </div>
-          </div>
-          <div class="form-group ">
-            <label for="hours" class="col-sm-6">Date</label>
-            <div class="col-sm-6">
-              <input v-model="appointmentDate" type="date" :minDate="minDate" min="minDate"/>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="waitings" class="col-sm-6">En plus: </label>
-            <div class="col-sm-6">
+            <label for="waitings" class="col-sm-2">En plus: </label>
+            <div class="col-sm-10">
               <select v-model="benefits" placeholder="En attendant">
                 <option value="coffee">Cafe</option>
                 <option value="juice">Jus de fruit</option>
@@ -97,15 +106,17 @@
             </div>
           </div>
 
-          <div class="form-group">
-            <div class="col-sm-6">
-              <textarea v-model="comments" placeholder="Commentaires" />
+          <div class="form-group col-xs-12">
+            <label for="waitings" class="col-sm-2">Commentaires: </label>
+            <div class="col-sm-10">
+              <textarea v-model="comments" placeholder="Commentaires" style="width: 100%" />
             </div>
           </div>
 
           <div class="form-group">
             <div class="col-xs-offset-2 col-xs-10">
-                <button @click="search" type="submit" class="btn btn-primary">Valider</button>
+              <!-- <button @click="search" type="submit" class="btn btn-primary">Valider</button> !-->
+              <router-link :to="{ name: 'coiffeur'}" tag="button" class="btn btn-primary validation">Valider</router-link>
             </div>
           </div>
         </form>
@@ -124,8 +135,8 @@
 <script>
 import moment from 'moment';
 import Header from '../funnel/Header.vue'
-moment.locale('fr');
 
+moment.locale('fr');
 export default {
   data() {
     return {
@@ -162,19 +173,19 @@ export default {
         }
       });
       this.$router.push({ name: "results" }); 
-    }
+    },
   },
   components: {
-    'Header': Header
+    'Header': Header,
   },
 }
+
 </script>
 
 <style>
   .content{
     width: 70%;
     margin: 15px auto 0;
-    border: 2px solid white;
     border-radius: 8px;
   }
 
@@ -183,4 +194,13 @@ export default {
   color: #fff;
 }
 
+  label{
+    color: white;
+  }
+  .btn.btn-primary.validation{
+    background-color: #add7d6;
+    border-color: #add7d6;
+    width: 35%;
+    color:black;
+  }
 </style>

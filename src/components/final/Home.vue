@@ -19,18 +19,24 @@
     </div>
     <div class="row home-">
       <div class="home-categoryCard col-xs-4">
-        <img class="img-responsive" src="https://s3.amazonaws.com/tereza-landing/Home/Categorie-Homme.png" alt="">
-        <p class="text-center blue">HOMMES</p>
+        <router-link :to="{ name: 'results' }">
+          <img class="img-responsive" src="https://s3.amazonaws.com/tereza-landing/Home/Categorie-Homme.png" alt="">
+          <p class="text-center blue">HOMMES</p>
+        </router-link>
       </div>
       
       <div class="home-categoryCard col-xs-4">
-        <img class="img-responsive" src="https://s3.amazonaws.com/tereza-landing/Home/Categorie-Femmes.png" alt="">
-        <p class="text-center pink">FEMMES</p>
+        <router-link :to="{ name: 'results' }">
+          <img class="img-responsive" src="https://s3.amazonaws.com/tereza-landing/Home/Categorie-Femmes.png" alt="">
+          <p class="text-center pink">FEMMES</p>
+        </router-link>
        </div>
        
        <div class="home-categoryCard col-xs-4">
+         <router-link :to="{ name: 'results' }">
           <img class="img-responsive" src="https://s3.amazonaws.com/tereza-landing/Home/Categorie-barbier.png" alt="">
           <p class="text-center blue">BARBIERS</p>
+         </router-link>
         </div>
 
       </div>
@@ -41,7 +47,6 @@
 <section class="home-selection">
   <div class="row">
     <div class="col-md-10 col-xs-12 col-md-offset-1">
-      
         <h3>LES COIFFEURS DU MOIS</h3>
         <div class="row">
           <div class="home-selectionList">
@@ -58,8 +63,9 @@
                   </div>
 
                   <div class="selectionCard-infos-button">
-                      <button class="btn"  href="">PRENDE RENDEZ-VOUS</button>
-                    </div>
+                    <router-link :to="{ name: 'coiffeur'}" tag="button" class="btn">PRENDE RENDEZ-VOUS</router-link>
+                  </div>
+
                 </div>
               </div>
             </template>
@@ -85,7 +91,7 @@
             </div>
           </div>
 
-          <div class="col-xs-12 col-md-2 col-md-offset-3 home-benefitItem">
+          <div class="col-xs-12 col-md-2 home-benefitItem">
             <div class="benefitIcon">
               <img class="img-responsive" src="https://s3.amazonaws.com/tereza-landing/Home/Hair2.png" alt="">
               <p class="benefits-highlight">Votre coupe preferee</p>
